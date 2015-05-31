@@ -3,4 +3,8 @@
 
     <string name="action_settings">Settings</string>
     <string name="button_record">Record</string>
+    <string name="button_stop_record">Stop</string>
+    <string name="button_replay">Replay</string>
+    <string name="button_stop_replay">Stop</string>
+
 </resources>
