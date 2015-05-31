@@ -6,6 +6,8 @@ import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.http.AndroidHttpClient;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,14 +15,27 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.FileEntity;
+
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
+import java.nio.ByteBuffer;
 
 // capture Audio Tutorial (via: http://developer.android.com/guide/topics/media/audio-capture.html#audiocapture)
 public class RecordActivity extends Activity {
@@ -163,46 +178,62 @@ public class RecordActivity extends Activity {
      * via: https://developer.android.com/training/basics/network-ops/connecting.html
      */
     private void startUpload() {
-        // retrieve upload file
-        FileInputStream file = null;
-        try {
-            file = new FileInputStream(filename);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        String url = "http://192.168.178.22:3000/audio/put_here";
+        String file_path = filename;
+
+        // start new UploadTask
+        new UploadTask().execute(url, file_path);
+    }
+
+    /**
+     * The upload process is performed in a background thread so the ui will be able to react to
+     * user input while uploading.
+     */
+    private class UploadTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            // TODO implement show progress bar in ui
         }
 
-        // connection stuff
-        OutputStream os = null;
+        @Override
+        protected String doInBackground(String... params) {
+            // params comes from the execute() call; params[0] is the passed url
+            String url_param = params[0];
+            String file_param = params[1];
 
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo ni = cm.getActiveNetworkInfo();
-        if (!(ni != null && ni.isConnected())) {
-            // error
-            System.out.println("Network availability check failed.");
-            return;
+            // check if network connection is available (probably not necessary, but meh, why not
+            // and mos of all: what could possibly go wrong?)
+            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo ni = cm.getActiveNetworkInfo();
+            if (!(ni != null && ni.isConnected())) {
+                // error
+                System.out.println("Network availability check failed.");
+                return "Network availability check failed.";
+            }
+            System.out.println("Success! Network ok.");
+
+            // desperately try to use the easy but deprecated method
+            HttpClient http = AndroidHttpClient.newInstance("MyApp");
+            HttpPost method = new HttpPost(url_param);
+
+            method.setEntity(new FileEntity(new File(file_param), "application/octet-stream"));
+
+            try {
+                HttpResponse response = http.execute(method);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return "Success! File was transferred correctly.";
         }
-        System.out.println("Success! Network ok.");
 
-        // proceed
-        try {
-            URL url = new URL("http://127.0.0.1:3000/audio/put_here/");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        // TODO check, if static property is necessary, if not, move into the Upload Task
+        final static String MULTIPART_BOUNDARY = "------------------563i2ndDfv2rTHiSsdfsdbouNdArYfORhxcvxcvefj3q2f";
+        final static String CRLF = "\r\n";
 
-            conn.setReadTimeout(10000 /* milliseconds */);
-            conn.setConnectTimeout(15000 /* milliseconds */);
-            conn.setRequestMethod("POST");
-            conn.setDoOutput(true);
-
-            conn.connect();
-            os = conn.getOutputStream();
-            os.write(file.read());
-            os.flush();
-            os.close();
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO implement task done event
         }
     }
 }
