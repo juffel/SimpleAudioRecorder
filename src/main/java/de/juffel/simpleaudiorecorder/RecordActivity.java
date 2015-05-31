@@ -25,9 +25,9 @@ public class RecordActivity extends ActionBarActivity {
         setContentView(R.layout.activity_record);
 
         // get path for filename
-        Environment.getExternalStorageDirectory().getAbsoluteFile();
-
-
+        filename = getFilesDir().getAbsolutePath();
+        filename += "/record.3gp";
+        System.out.println("output recordings to " + filename);
     }
 
     @Override
@@ -53,6 +53,20 @@ public class RecordActivity extends ActionBarActivity {
     }
 
     public void record(View view) {
+        // capture Audio (via: http://developer.android.com/guide/topics/media/audio-capture.html#audiocapture)
+        // initialize recorder
+        recorder = new MediaRecorder();
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setOutputFile(filename);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+        try {
+            recorder.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         // change record to stop button
         Button button = (Button) findViewById(R.id.button_record);
         button.setText(R.string.button_stop_record);
@@ -66,20 +80,7 @@ public class RecordActivity extends ActionBarActivity {
             }
         });
 
-        // capture Audio (via: http://developer.android.com/guide/topics/media/audio-capture.html#audiocapture)
-        // initialize recorder
-        recorder = new MediaRecorder();
-        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
-        recorder.setOutputFile(filename);
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-
-        try {
-            recorder.prepare();
-            recorder.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        recorder.start();
     }
 
     public void replay(View view) {
