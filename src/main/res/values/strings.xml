@@ -6,5 +6,6 @@
     <string name="button_stop_record">Stop</string>
     <string name="button_replay">Replay</string>
     <string name="button_stop_replay">Stop</string>
+    <string name="button_upload">Upload</string>
 
 </resources>
