@@ -74,7 +74,6 @@ public class RecordActivity extends ActionBarActivity {
             public void onClick(View view) {
                 Button button = (Button) findViewById(R.id.button_record);
                 button.setText(R.string.button_record);
-                // TODO stop and save recording
                 recorder.stop();
                 recorder.release();
             }
@@ -87,11 +86,13 @@ public class RecordActivity extends ActionBarActivity {
         // change event handler for button
         Button button = (Button) findViewById(R.id.button_replay);
         button.setText(R.string.button_stop_replay);
-        /* button.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
+                Button button = (Button) findViewById(R.id.button_replay);
+                button.setText(R.string.button_replay);
+                player.release();
             }
-        }); */
+        });
 
         player = new MediaPlayer();
         try {
