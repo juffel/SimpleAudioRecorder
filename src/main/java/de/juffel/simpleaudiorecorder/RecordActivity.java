@@ -5,10 +5,8 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.Environment;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -20,36 +18,66 @@ public class RecordActivity extends Activity {
 
     private static String filename;
 
-    private RecordButton recordButton;
-    private PlayButton playButton;
-
     private MediaRecorder recorder;
     private MediaPlayer player;
+
+    private Boolean recording;
+    private Boolean playing;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // create Layout programmatically to easily use custom defined Button-Classes
-        LinearLayout ll = new LinearLayout(this);
-        recordButton = new RecordButton(this);
-        ll.addView(recordButton,
-                new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        0));
-        playButton = new PlayButton(this);
-        ll.addView(playButton,
-                new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        0));
-        setContentView(ll);
+        setContentView(R.layout.activity_record);
 
         // get path for filename
         filename = getFilesDir().getAbsolutePath();
         filename += "/record.3gp";
         System.out.println("output recordings to " + filename);
+
+        // initialize record button
+        final Button recordButton = (Button) findViewById(R.id.button_record);
+
+        OnClickListener recordListener = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (recording) {
+                    recordButton.setText(R.string.button_record);
+                    stopRecord();
+                } else {
+                    recordButton.setText(R.string.button_stop_record);
+                    startRecord();
+                }
+                // toggle recording status
+                recording = !recording;
+            }
+        };
+        recordButton.setText(R.string.button_record);
+        recordButton.setOnClickListener(recordListener);
+        recording = false;
+
+        // initialize play button
+        final Button playButton = (Button) findViewById(R.id.button_replay);
+
+        OnClickListener playListener = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // toggle play start/stop
+                if (playing) {
+                    playButton.setText(R.string.button_replay);
+                    stopReplay();
+                } else {
+                    playButton.setText(R.string.button_stop_replay);
+                    startReplay();
+                }
+                // toggle playing status
+                playing = !playing;
+            }
+        };
+
+        playButton.setText(R.string.button_replay);
+        playButton.setOnClickListener(playListener);
+        playing = false;
     }
 
     /**
@@ -68,68 +96,6 @@ public class RecordActivity extends Activity {
             player = null;
         }
     }
-
-    /**
-     * Custom Subclass of Button (for Record Button), that additionally handles the state of the
-     * Button.
-     */
-    class RecordButton extends Button {
-        Boolean recording;
-
-        OnClickListener clicker = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (recording) {
-                    setText(R.string.button_record);
-                    stopRecord();
-                } else {
-                    setText(R.string.button_stop_record);
-                    startRecord();
-                }
-                // toggle recording status
-                recording = !recording;
-            }
-        };
-
-        public RecordButton(Context context) {
-            super(context);
-            setText(R.string.button_record);
-            setOnClickListener(clicker);
-            recording = false;
-        }
-    }
-
-    /**
-     * Custom Subclass of Button (for Play Button), that additionally handles the state of the
-     * Button.
-     */
-    class PlayButton extends Button {
-        Boolean playing;
-
-        OnClickListener clicker = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // toggle play start/stop
-                if (playing) {
-                    setText(R.string.button_replay);
-                    stopReplay();
-                } else {
-                    setText(R.string.button_stop_replay);
-                    startReplay();
-                }
-                // toggle playing status
-                playing = !playing;
-            }
-        };
-
-        public PlayButton(Context context) {
-            super(context);
-            setText(R.string.button_replay);
-            setOnClickListener(clicker);
-            playing = false;
-        }
-    }
-
 
     /**
      * Control audio capture (start & stop)
