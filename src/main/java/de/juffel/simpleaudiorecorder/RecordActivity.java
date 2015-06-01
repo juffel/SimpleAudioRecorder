@@ -179,10 +179,42 @@ public class RecordActivity extends Activity {
     }
 
     /**
+     * Uploads the current recording to the server using the AsyncHttpClient Library
+     */
+    private void startUpload() {
+        String url = "http://192.168.178.22:3000/audio/put_here";
+        String file_path = filename;
+
+        // src: http://loopj.com/android-async-http/ @ Uploading Files with RequestParams
+        // gather parameters and upload file
+        File file = new File(file_path);
+        RequestParams params = new RequestParams();
+        try {
+            params.put("recording.3gp", file);
+        } catch(FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // send request
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.post(url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
+                System.out.println("response received with status code " + statusCode);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] bytes, Throwable throwable) {
+                System.out.println("response received with status code " + statusCode);
+            }
+        });
+    }
+
+    /**
      * if there is a current recording, this method uploads the file to the for now hardcoded server
      * via: https://developer.android.com/training/basics/network-ops/connecting.html
      */
-    private void startUpload() {
+    private void startUpload_dep() {
         String url = "http://192.168.178.22:3000/audio/put_here";
         String file_path = filename;
 
