@@ -166,7 +166,7 @@ public class RecordActivity extends Activity {
         File file = new File(file_path);
         RequestParams params = new RequestParams();
         try {
-            params.put("recording.3gp", file);
+            params.put("file", file);
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }
