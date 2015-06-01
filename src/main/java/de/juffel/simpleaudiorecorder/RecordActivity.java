@@ -15,6 +15,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -212,17 +217,25 @@ public class RecordActivity extends Activity {
             }
             System.out.println("Success! Network ok.");
 
-            // desperately try to use the easy but deprecated method
-            HttpClient http = AndroidHttpClient.newInstance("MyApp");
-            HttpPost method = new HttpPost(url_param);
-
-            method.setEntity(new FileEntity(new File(file_param), "application/octet-stream"));
-
+            AsyncHttpClient client = new AsyncHttpClient();
+            File file = new File(file_param);
+            RequestParams requestParams = new RequestParams();
             try {
-                HttpResponse response = http.execute(method);
-            } catch (IOException e) {
+                requestParams.put("filename", file);
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+            client.post(url_param, requestParams, new AsyncHttpResponseHandler() {
+                @Override
+                public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                    System.out.println("Success :)");
+                }
+
+                @Override
+                public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                    System.out.println("Failure :(");
+                }
+            });
 
             return "Success! File was transferred correctly.";
         }
