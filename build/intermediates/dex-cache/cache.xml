@@ -2,39 +2,39 @@
 <items version="2" >
 
     <item
-        jar="/Users/Julian/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jar="/home/kai/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/Users/Julian/Google Drive/Projects/SimpleAudioRecorder/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-cd3822ba2a7b0ca6a1a5105e24a0924c8adf61d0.jar" />
+        <dex dex="/home/kai/StudioProjects/SimpleAudioRecorder/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-1c4b86ea935e39b475135750e5c31357cd43019a.jar" />
     </item>
     <item
-        jar="/Users/Julian/Google Drive/Projects/SimpleAudioRecorder/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="/Users/Julian/Google Drive/Projects/SimpleAudioRecorder/app/build/intermediates/pre-dexed/debug/classes-57c929d9bdfb0e057d334052033ab09dcf8160d1.jar" />
-    </item>
-    <item
-        jar="/Users/Julian/Google Drive/Projects/SimpleAudioRecorder/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/Users/Julian/Google Drive/Projects/SimpleAudioRecorder/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-b2cb04e3250b484703f3ae7e891003148d84b5c2.jar" />
-    </item>
-    <item
-        jar="/Users/Julian/Google Drive/Projects/SimpleAudioRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jar="/home/kai/StudioProjects/SimpleAudioRecorder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/Users/Julian/Google Drive/Projects/SimpleAudioRecorder/app/build/intermediates/pre-dexed/debug/classes-8397fa2c54f68732b2d8545432994d8433e4631a.jar" />
+        <dex dex="/home/kai/StudioProjects/SimpleAudioRecorder/app/build/intermediates/pre-dexed/debug/classes-a84213a72c71566b4764c9ad4360de29a2fb1122.jar" />
     </item>
     <item
-        jar="/Users/Julian/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
+        jar="/home/kai/StudioProjects/SimpleAudioRecorder/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/home/kai/StudioProjects/SimpleAudioRecorder/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-f30319f1de8477de7a41326a43c170c798112802.jar" />
+    </item>
+    <item
+        jar="/home/kai/StudioProjects/SimpleAudioRecorder/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/home/kai/StudioProjects/SimpleAudioRecorder/app/build/intermediates/pre-dexed/debug/classes-c8e88cb2b0d6d336ca2d68f553c8f9300b0a2dda.jar" />
+    </item>
+    <item
+        jar="/home/kai/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
-        <dex dex="/Users/Julian/Google Drive/Projects/SimpleAudioRecorder/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-5db98f5dae895489896ead25c749a4201926265e.jar" />
+        <dex dex="/home/kai/StudioProjects/SimpleAudioRecorder/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-466b9159ecabf475b398b7678bd7aa2fe6df7f67.jar" />
     </item>
 
 </items>
