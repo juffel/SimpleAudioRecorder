@@ -1,12 +1,16 @@
 package de.juffel.simpleaudiorecorder;
 
 import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -29,6 +33,8 @@ public class RecordActivity extends Activity {
     private Boolean recording;
     private Boolean playing;
 
+    private ImageView animation_background;
+    private AnimationDrawable animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,54 +48,67 @@ public class RecordActivity extends Activity {
 
         ///////////////////////////
         // initialize record button
-        final Button recordButton = (Button) findViewById(R.id.button_record);
+        final ImageButton recordButton = (ImageButton) findViewById(R.id.button_record);
         OnClickListener recordListener = new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (recording) {
-                    recordButton.setText(R.string.button_record);
+                    // recordButton.setText(R.string.button_record);
                     stopRecord();
                 } else {
-                    recordButton.setText(R.string.button_stop_record);
+                    // recordButton.setText(R.string.button_stop_record);
                     startRecord();
                 }
                 // toggle recording status
                 recording = !recording;
             }
         };
-        recordButton.setText(R.string.button_record);
+        //recordButton.setText(R.string.button_record);
         recordButton.setOnClickListener(recordListener);
         recording = false;
 
         /////////////////////////
         // initialize play button
-        final Button playButton = (Button) findViewById(R.id.button_replay);
+        final ImageButton playButton = (ImageButton) findViewById(R.id.button_replay);
         OnClickListener playListener = new OnClickListener() {
             @Override
             public void onClick(View v) {
                 // toggle play start/stop
                 if (playing) {
-                    playButton.setText(R.string.button_replay);
+                    // playButton.setText(R.string.button_replay);
                     stopReplay();
                 } else {
-                    playButton.setText(R.string.button_stop_replay);
+                    // playButton.setText(R.string.button_stop_replay);
                     startReplay();
                 }
                 // toggle playing status
                 playing = !playing;
             }
         };
-        playButton.setText(R.string.button_replay);
+        //playButton.setText(R.string.button_replay);
         playButton.setOnClickListener(playListener);
         playing = false;
 
         ///////////////////////////
         // initialize upload button
-        final Button uploadButton = (Button) findViewById(R.id.button_upload);
+        final ImageButton uploadButton = (ImageButton) findViewById(R.id.button_upload);
         uploadButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 startUpload();
+            }
+        });
+
+        ///////////////////////////
+        // initialize animation button
+        animation_background = (ImageView) findViewById(R.id.animation_view);
+        animation_background.setBackgroundResource(R.drawable.button_play_animated);
+        animation = (AnimationDrawable) animation_background.getBackground();
+        final Button animationButton = (Button) findViewById(R.id.animation_button);
+        animationButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animation.run();
             }
         });
     }
