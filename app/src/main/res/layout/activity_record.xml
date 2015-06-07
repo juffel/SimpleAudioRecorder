@@ -6,24 +6,16 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_record"
-        android:src="@drawable/button_record"
         android:id="@+id/button_record"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="72dp"
-        android:textSize="40dp"
-        android:textAllCaps="false"
         android:onClick="record"
         android:layout_gravity="center_horizontal" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_replay"
-        android:src="@drawable/button_play"
         android:id="@+id/button_replay"
-        android:textSize="40dp"
-        android:textAllCaps="false"
         android:onClick="replay"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/button_record"
@@ -32,8 +24,6 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_upload"
-        android:src="@drawable/button_upload"
         android:id="@+id/button_upload"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/button_replay"

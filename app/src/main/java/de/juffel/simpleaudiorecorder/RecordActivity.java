@@ -53,17 +53,17 @@ public class RecordActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if (recording) {
-                    // recordButton.setText(R.string.button_record);
+                    recordButton.setBackgroundResource(R.drawable.button_record);
                     stopRecord();
                 } else {
-                    // recordButton.setText(R.string.button_stop_record);
+                    recordButton.setBackgroundResource(R.drawable.button_record_stop);
                     startRecord();
                 }
                 // toggle recording status
                 recording = !recording;
             }
         };
-        //recordButton.setText(R.string.button_record);
+        recordButton.setBackgroundResource(R.drawable.button_record);
         recordButton.setOnClickListener(recordListener);
         recording = false;
 
@@ -75,17 +75,17 @@ public class RecordActivity extends Activity {
             public void onClick(View v) {
                 // toggle play start/stop
                 if (playing) {
-                    // playButton.setText(R.string.button_replay);
+                    playButton.setBackgroundResource(R.drawable.button_play);
                     stopReplay();
                 } else {
-                    // playButton.setText(R.string.button_stop_replay);
+                    playButton.setBackgroundResource(R.drawable.button_play_stop);
                     startReplay();
                 }
                 // toggle playing status
                 playing = !playing;
             }
         };
-        //playButton.setText(R.string.button_replay);
+        playButton.setBackgroundResource(R.drawable.button_play);
         playButton.setOnClickListener(playListener);
         playing = false;
 
@@ -98,6 +98,7 @@ public class RecordActivity extends Activity {
                 startUpload();
             }
         });
+        uploadButton.setBackgroundResource(R.drawable.button_upload);
 
         ///////////////////////////
         // initialize animation button
