@@ -107,7 +107,8 @@ public class RecordActivity extends Activity {
         animationButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                animation.run();
+                animation.stop();
+                animation.start();
             }
         });
     }

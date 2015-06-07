@@ -39,15 +39,15 @@
 
     <ImageView
         android:id="@+id/animation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_toEndOf="@+id/animation_button"
         android:layout_below="@+id/button_upload"
         android:layout_alignStart="@+id/animation_button" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/animation_button"
         android:src="@drawable/button_play_00"
         android:layout_below="@+id/button_upload"
