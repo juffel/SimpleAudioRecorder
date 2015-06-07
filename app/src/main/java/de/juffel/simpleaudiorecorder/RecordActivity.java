@@ -159,6 +159,14 @@ public class RecordActivity extends Activity {
      */
     private void startReplay() {
         player = new MediaPlayer();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                // reset the replay button to non-playing state(ImageButton) findViewById(R.id.button_record
+                ImageButton playButton = (ImageButton) findViewById(R.id.button_replay);
+                playButton.performClick();
+            }
+        });
         try {
             player.setDataSource(filename);
             player.prepare();
