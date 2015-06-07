@@ -2,6 +2,7 @@ package de.juffel.simpleaudiorecorder;
 
 import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -32,9 +33,6 @@ public class RecordActivity extends Activity {
 
     private Boolean recording;
     private Boolean playing;
-
-    private ImageView animation_background;
-    private AnimationDrawable animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,9 +100,9 @@ public class RecordActivity extends Activity {
 
         ///////////////////////////
         // initialize animation button
-        animation_background = (ImageView) findViewById(R.id.animation_view);
+        ImageView animation_background = (ImageView) findViewById(R.id.animation_view);
         animation_background.setBackgroundResource(R.drawable.button_play_animated);
-        animation = (AnimationDrawable) animation_background.getBackground();
+        final AnimationDrawable animation = (AnimationDrawable) animation_background.getBackground();
         final Button animationButton = (Button) findViewById(R.id.animation_button);
         animationButton.setOnClickListener(new OnClickListener() {
             @Override
