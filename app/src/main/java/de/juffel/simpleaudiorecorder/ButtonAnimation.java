@@ -3,13 +3,13 @@ package de.juffel.simpleaudiorecorder;
 import android.graphics.drawable.AnimationDrawable;
 
 /**
- * State of a StateButton, containing animations for state entry and state exit.
+ * Animation of a StateButton, containing animations for state entry and state exit.
  * Created by Julian on 08/06/15.
  */
-public class ButtonState {
+public class ButtonAnimation {
     private AnimationDrawable enterAnimation, exitAnimation;
 
-    public ButtonState() {
+    public ButtonAnimation() {
         // TODO set enter-/exitAnimation
     }
 
