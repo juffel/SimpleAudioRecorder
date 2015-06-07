@@ -61,7 +61,7 @@ public class RecordActivity extends Activity {
                 recording = !recording;
             }
         };
-        recordButton.setBackgroundResource(R.drawable.button_record_stop);
+        recordButton.setBackgroundResource(R.drawable.button_record);
         recordButton.setOnClickListener(recordListener);
         recording = false;
 
@@ -105,7 +105,7 @@ public class RecordActivity extends Activity {
         animationButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                AnimationDrawable animation = (AnimationDrawable)animationButton.getBackground();
+                AnimationDrawable animation = (AnimationDrawable) animationButton.getBackground();
                 animation.stop();
                 animation.start();
             }

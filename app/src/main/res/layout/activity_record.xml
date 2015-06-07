@@ -12,14 +12,6 @@
         android:onClick="record"
         android:layout_gravity="center_horizontal" />
 
-    <ImageView
-        android:id="@+id/button_replay_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button_replay"
-        android:layout_below="@+id/button_record"
-        android:layout_alignStart="@+id/button_replay" />
-
     <ImageButton
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -36,7 +28,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/button_replay"
         android:layout_alignStart="@+id/button_replay" />
-
 
     <Button
         android:layout_width="80dp"
