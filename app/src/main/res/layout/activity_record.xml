@@ -37,13 +37,6 @@
         android:layout_below="@+id/button_replay"
         android:layout_alignStart="@+id/button_replay" />
 
-    <ImageView
-        android:id="@+id/animation_view"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_toEndOf="@+id/animation_button"
-        android:layout_below="@+id/button_upload"
-        android:layout_alignStart="@+id/animation_button" />
 
     <Button
         android:layout_width="80dp"

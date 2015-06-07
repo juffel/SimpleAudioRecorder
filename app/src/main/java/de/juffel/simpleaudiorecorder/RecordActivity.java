@@ -100,13 +100,12 @@ public class RecordActivity extends Activity {
 
         ///////////////////////////
         // initialize animation button
-        ImageView animation_background = (ImageView) findViewById(R.id.animation_view);
-        animation_background.setBackgroundResource(R.drawable.button_play_animated);
-        final AnimationDrawable animation = (AnimationDrawable) animation_background.getBackground();
         final Button animationButton = (Button) findViewById(R.id.animation_button);
+        animationButton.setBackgroundResource(R.drawable.button_play_animated);
         animationButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                AnimationDrawable animation = (AnimationDrawable)animationButton.getBackground();
                 animation.stop();
                 animation.start();
             }
