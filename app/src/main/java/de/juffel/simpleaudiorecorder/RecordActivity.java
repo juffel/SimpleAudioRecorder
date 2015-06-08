@@ -39,12 +39,23 @@ public class RecordActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // get path for filename
+        filename = getFilesDir().getAbsolutePath();
+        filename += "/record.3gp";
+        // if no such file exists, touch it
+        try {
+            new File(filename).createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("output recordings to " + filename);
+
         RelativeLayout rl = new RelativeLayout(this);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.MATCH_PARENT);
 
-        RecordButton rbut = new RecordButton(this);
+        RecordButton rbut = new RecordButton(this, filename);
         rl.addView(rbut);
 
 

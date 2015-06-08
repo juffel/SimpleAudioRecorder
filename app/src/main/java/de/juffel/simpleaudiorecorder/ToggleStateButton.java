@@ -62,8 +62,12 @@ public class ToggleStateButton extends Button {
     public void setButtonAnimations(ButtonAnimation entry, ButtonAnimation other) {
         this.entryState = entry;
         this.otherState = other;
-        // initialize button using toggle method
-        state = false;
-        toggle();
+        // initialize button
+        state = true;
+        // call entry animation of otherState
+        this.setBackgroundResource(otherState.getEntryAnimation());
+        AnimationDrawable anim = (AnimationDrawable) this.getBackground();
+        anim.stop(); // maybe unnecessary
+        anim.start();
     }
 }

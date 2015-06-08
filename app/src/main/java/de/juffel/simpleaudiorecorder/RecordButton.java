@@ -15,8 +15,10 @@ public class RecordButton extends ToggleStateButton {
     private MediaRecorder recorder;
     private static String filename;
 
-    public RecordButton(Context context) {
+    public RecordButton(Context context, String filename) {
         super(context);
+
+        this.filename = filename;
 
         // create Animations
         ButtonAnimation entry = new ButtonAnimation();
@@ -42,12 +44,12 @@ public class RecordButton extends ToggleStateButton {
      */
     @Override
     public void toggle() {
-        super.toggle();
         if (super.getState()) {
-            // TODO start recording
+            startRecord();
         } else {
-            // TODO stop recording
+            stopRecord();
         }
+        super.toggle();
     }
 
     /**
@@ -67,6 +69,7 @@ public class RecordButton extends ToggleStateButton {
             e.printStackTrace();
         }
 
+        System.out.println("starting to record to file: " + filename);
         recorder.start();
     }
     private void stopRecord() {
