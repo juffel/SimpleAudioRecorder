@@ -15,7 +15,7 @@ public class RecordButton extends ToggleStateButton {
     private MediaRecorder recorder;
     private static final String filename = "/data/data/de.juffel.simpleaudiorecorder/files/record.3gp";
 
-    // this constructor is called, when a RecordButton is created in code
+    // this constructor is called, when a RecordButton is created in code (just for completeness)
     public RecordButton(Context context) {
         super(context);
     }
@@ -26,14 +26,6 @@ public class RecordButton extends ToggleStateButton {
 
         // set this Button's animations
         this.setAnimations(R.drawable.button_record_idle_exit, R.drawable.button_record_idle_entry);
-
-        // set own onclicklistener
-        this.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toggle();
-            }
-        });
     }
 
     /**

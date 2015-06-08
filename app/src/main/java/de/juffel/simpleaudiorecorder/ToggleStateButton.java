@@ -3,6 +3,7 @@ package de.juffel.simpleaudiorecorder;
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
+import android.view.View;
 import android.widget.Button;
 
 import java.util.List;
@@ -68,6 +69,15 @@ public class ToggleStateButton extends Button {
         this.otherState = new ButtonAnimation(other);
         // initialize button
         state = true;
+
+        // set own onclicklistener
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggle();
+            }
+        });
+
         // call entry animation of otherState
         this.setBackgroundResource(otherState.getEntryAnimation());
         AnimationDrawable anim = (AnimationDrawable) this.getBackground();
