@@ -1,7 +1,9 @@
 package de.juffel.simpleaudiorecorder;
 
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaRecorder;
+import android.view.View;
 
 import java.io.IOException;
 
@@ -16,7 +18,24 @@ public class RecordButton extends ToggleStateButton {
     public RecordButton(Context context) {
         super(context);
 
-        // TODO set own onclicklistener
+        // create Animations
+        ButtonAnimation entry = new ButtonAnimation();
+        // sorry for using of a deprecated method, but for now its the easiest approach
+        AnimationDrawable animation = (AnimationDrawable) getResources().getDrawable(R.drawable.button_record_idle_exit);
+        entry.setEnterAnimation(animation);
+        entry.setExitAnimation(animation);
+
+        ButtonAnimation other = new ButtonAnimation();
+        // and set them as this Button's animations
+        this.setButtonAnimations(entry, other);
+
+        // set own onclicklistener
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggle();
+            }
+        });
     }
 
     /**
@@ -24,10 +43,11 @@ public class RecordButton extends ToggleStateButton {
      */
     @Override
     public void toggle() {
+        super.toggle();
         if (super.getState()) {
-
+            // TODO start recording
         } else {
-
+            // TODO stop recording
         }
     }
 

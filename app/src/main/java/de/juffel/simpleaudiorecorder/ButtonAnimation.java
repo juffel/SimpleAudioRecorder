@@ -9,8 +9,7 @@ import android.graphics.drawable.AnimationDrawable;
 public class ButtonAnimation {
     private AnimationDrawable enterAnimation, exitAnimation;
 
-    public ButtonAnimation() {
-        // TODO set enter-/exitAnimation
+    public ButtonAnimation(int entry_id, int exit_id) {
     }
 
     public AnimationDrawable getEnterAnimation() {
