@@ -98,6 +98,7 @@ public class RecordActivity extends Activity {
     /**
      * Control audio playback (start & stop)
      */
+    /*
     private void startReplay() {
         player = new MediaPlayer();
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -120,6 +121,7 @@ public class RecordActivity extends Activity {
         player.release();
         player = null; // dunno why this is necessary but it appears in the tut, so i adopt it
     }
+    */
 
     /**
      * Uploads the current recording to the server using the AsyncHttpClient Library
