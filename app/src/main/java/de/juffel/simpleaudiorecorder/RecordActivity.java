@@ -100,14 +100,14 @@ public class RecordActivity extends Activity {
 
         ///////////////////////////
         // initialize animation button
-        ImageView animation_background = (ImageView) findViewById(R.id.animation_view);
-        animation_background.setBackgroundResource(R.drawable.button_play_animated);
-        final AnimationDrawable animation = (AnimationDrawable) animation_background.getBackground();
         final Button animationButton = (Button) findViewById(R.id.animation_button);
+        animationButton.setBackgroundResource(R.drawable.button_play_animated);
         animationButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                animation.run();
+                AnimationDrawable animation = (AnimationDrawable) animationButton.getBackground();
+                animation.stop();
+                animation.start();
             }
         });
     }
@@ -159,6 +159,14 @@ public class RecordActivity extends Activity {
      */
     private void startReplay() {
         player = new MediaPlayer();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                // reset the replay button to non-playing state(ImageButton) findViewById(R.id.button_record
+                ImageButton playButton = (ImageButton) findViewById(R.id.button_replay);
+                playButton.performClick();
+            }
+        });
         try {
             player.setDataSource(filename);
             player.prepare();
