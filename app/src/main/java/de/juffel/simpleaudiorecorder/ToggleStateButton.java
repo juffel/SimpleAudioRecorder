@@ -12,6 +12,10 @@ import java.util.List;
  * Created by Julian on 08/06/15.
  */
 public class ToggleStateButton extends Button {
+    /**
+     * These two ButtonAnimations contain the Animation Objects, that are displayed, when either
+     * state is being entered.
+     */
     private ButtonAnimation entryState, otherState;
     /**
      * Boolean encoding the current state of the button, true means entryState, false means
@@ -29,15 +33,23 @@ public class ToggleStateButton extends Button {
 
     public void toggle() {
         if (state) {
+            // toggle state
             state = false;
+            // call entry animation of entryState
             AnimationDrawable entry = entryState.getExitAnimation();
-            AnimationDrawable exit = otherState.getEnterAnimation();
-            // TODO call animations
+            this.setBackground(entry);
+            AnimationDrawable anim = (AnimationDrawable) this.getBackground();
+            anim.stop(); // maybe unnecessary
+            anim.start();
         } else {
+            // toggle state
             state = true;
+            // call entry animation of otherState
             AnimationDrawable entry = otherState.getExitAnimation();
-            AnimationDrawable exit = entryState.getEnterAnimation();
-            // TODO call animations
+            this.setBackground(entry);
+            AnimationDrawable anim = (AnimationDrawable) this.getBackground();
+            anim.stop(); // maybe unnecessary
+            anim.start();
         }
     }
 }
