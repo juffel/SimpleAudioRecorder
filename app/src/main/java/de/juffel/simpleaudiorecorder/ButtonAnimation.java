@@ -7,24 +7,24 @@ import android.graphics.drawable.AnimationDrawable;
  * Created by Julian on 08/06/15.
  */
 public class ButtonAnimation {
-    private AnimationDrawable enterAnimation, exitAnimation;
+    private Integer entryAnimation, exitAnimation;
 
     public ButtonAnimation() {
     }
 
-    public AnimationDrawable getEnterAnimation() {
-        return enterAnimation;
-    }
-
-    public void setEntryAnimation(AnimationDrawable enterAnimation) {
-        this.enterAnimation = enterAnimation;
-    }
-
-    public AnimationDrawable getExitAnimation() {
+    public Integer getExitAnimation() {
         return exitAnimation;
     }
 
-    public void setExitAnimation(AnimationDrawable exitAnimation) {
+    public void setExitAnimation(Integer exitAnimation) {
         this.exitAnimation = exitAnimation;
+    }
+
+    public Integer getEntryAnimation() {
+        return entryAnimation;
+    }
+
+    public void setEntryAnimation(Integer entryAnimation) {
+        this.entryAnimation = entryAnimation;
     }
 }
