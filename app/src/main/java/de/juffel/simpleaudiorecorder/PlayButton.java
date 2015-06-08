@@ -1,6 +1,7 @@
 package de.juffel.simpleaudiorecorder;
 
 import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
@@ -24,24 +25,39 @@ public class PlayButton extends ToggleStateButton {
         super(context);
 
         // declare Button's animations
-        this.setAnimations(R.drawable.button_play_animated, R.drawable.button_play_animated);
+        this.setAnimations(R.drawable.button_play, R.drawable.button_play_animated);
     }
 
     @Override
     public void toggle() {
         // do play and stop stuff here
         if (super.getState()) {
-            startReplay();
+            toOtherState();
         } else {
-            stopReplay();
+            toEntryState();
         }
         super.toggle();
+    }
+
+    @Override
+    public void toEntryState() {
+        stopReplay();
+        super.toEntryState();
+    }
+
+    @Override
+    public void toOtherState() {
+        startReplay();
+        super.toOtherState();
     }
 
     /**
      * Control audio playback (start & stop)
      */
     private void startReplay() {
+        // stop possibly running mediaplayer
+        stopReplay();
+
         String filename = RecordActivity.FILENAME;
         player = new MediaPlayer();
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -51,7 +67,7 @@ public class PlayButton extends ToggleStateButton {
              */
             @Override
             public void onCompletion(MediaPlayer mp) {
-                PlayButton.super.toggle();
+                toEntryState();
             }
         });
         try {

@@ -26,7 +26,7 @@ public class UploadButton extends ToggleStateButton {
     public UploadButton(Context context, AttributeSet attrs) {
         super(context);
 
-        this.setAnimations(R.drawable.button_upload_animated, R.drawable.button_upload_animated);
+        this.setAnimations(R.drawable.button_upload, R.drawable.button_upload_animated);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class UploadButton extends ToggleStateButton {
         if (super.getState()) {
 
         } else {
-
+            // if currently in secondary state (continuous animation is running) stop this animation
         }
         super.toggle();
     }

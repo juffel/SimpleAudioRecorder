@@ -41,20 +41,28 @@ public class ToggleStateButton extends Button {
         if (state) {
             // toggle state
             state = false;
-            // call exit animation of entryState
-            this.setBackgroundResource(entryState.getEntryAnimation());
-            AnimationDrawable anim = (AnimationDrawable) this.getBackground();
-            anim.stop(); // maybe unnecessary
-            anim.start();
+            toOtherState();
         } else {
             // toggle state
             state = true;
-            // call entry animation of otherState
-            this.setBackgroundResource(otherState.getEntryAnimation());
-            AnimationDrawable anim = (AnimationDrawable) this.getBackground();
-            anim.stop(); // maybe unnecessary
-            anim.start();
+            toEntryState();
         }
+    }
+
+    public void toEntryState() {
+        // call animation of entryState
+        this.setBackgroundResource(entryState.getEntryAnimation());
+        AnimationDrawable anim = (AnimationDrawable) this.getBackground();
+        anim.stop(); // maybe unnecessary
+        anim.start();
+    }
+
+    public void toOtherState() {
+        // call animation of otherState
+        this.setBackgroundResource(otherState.getEntryAnimation());
+        AnimationDrawable anim = (AnimationDrawable) this.getBackground();
+        anim.stop(); // maybe unnecessary
+        anim.start();
     }
 
     /**
@@ -79,7 +87,7 @@ public class ToggleStateButton extends Button {
         });
 
         // call entry animation of otherState
-        this.setBackgroundResource(otherState.getEntryAnimation());
+        this.setBackgroundResource(entryState.getEntryAnimation());
         AnimationDrawable anim = (AnimationDrawable) this.getBackground();
         anim.stop(); // maybe unnecessary
         anim.start();

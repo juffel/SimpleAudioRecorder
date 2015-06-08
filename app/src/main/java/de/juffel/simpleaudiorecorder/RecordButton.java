@@ -23,7 +23,7 @@ public class RecordButton extends ToggleStateButton {
         super(context);
 
         // set this Button's animations
-        this.setAnimations(R.drawable.button_record_idle_exit, R.drawable.button_record_idle_entry);
+        this.setAnimations(R.drawable.button_record_idle_entry, R.drawable.button_record_idle_exit);
     }
 
     /**
