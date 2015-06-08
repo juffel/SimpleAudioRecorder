@@ -6,6 +6,7 @@ import android.media.Image;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -27,7 +28,7 @@ import java.io.IOException;
 // capture Audio Tutorial (via: http://developer.android.com/guide/topics/media/audio-capture.html#audiocapture)
 public class RecordActivity extends Activity {
 
-    private static String filename;
+    public static String FILENAME;
 
     private MediaRecorder recorder;
     private MediaPlayer player;
@@ -38,40 +39,18 @@ public class RecordActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_record);
 
         // get path for filename
-        filename = getFilesDir().getAbsolutePath();
-        filename += "/record.3gp";
+        FILENAME = getFilesDir().getAbsolutePath();
+        FILENAME += "/record.3gp";
         // if no such file exists, touch it
         try {
-            new File(filename).createNewFile();
+            new File(FILENAME).createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("output recordings to " + filename);
-
-        RelativeLayout rl = new RelativeLayout(this);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.MATCH_PARENT);
-
-        RecordButton rbut = new RecordButton(this, filename);
-        rl.addView(rbut);
-
-
-        Button sbut = new Button(this);
-        sbut.setBackgroundResource(R.drawable.button_play_animated);
-        final AnimationDrawable bgr = (AnimationDrawable) sbut.getBackground();
-        sbut.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bgr.start();
-            }
-        });
-        // rl.addView(sbut);
-
-
-        setContentView(rl, params);
+        System.out.println("output recordings to " + FILENAME);
     }
 
     /**
@@ -99,7 +78,7 @@ public class RecordActivity extends Activity {
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        recorder.setOutputFile(filename);
+        recorder.setOutputFile(FILENAME);
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
         try {
@@ -130,7 +109,7 @@ public class RecordActivity extends Activity {
             }
         });
         try {
-            player.setDataSource(filename);
+            player.setDataSource(FILENAME);
             player.prepare();
             player.start();
         } catch (IOException e) {
@@ -147,7 +126,7 @@ public class RecordActivity extends Activity {
      */
     private void startUpload() {
         String url = "http://192.168.178.22:3000/audio/put_here";
-        String file_path = filename;
+        String file_path = FILENAME;
 
         // src: http://loopj.com/android-async-http/ @ Uploading Files with RequestParams
         // gather parameters and upload file
@@ -172,5 +151,9 @@ public class RecordActivity extends Activity {
                 System.out.println("response received with status code " + statusCode);
             }
         });
+    }
+
+    public String getFilename() {
+        return FILENAME;
     }
 }

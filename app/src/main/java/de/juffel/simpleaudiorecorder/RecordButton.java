@@ -3,6 +3,7 @@ package de.juffel.simpleaudiorecorder;
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaRecorder;
+import android.util.AttributeSet;
 import android.view.View;
 
 import java.io.IOException;
@@ -13,12 +14,16 @@ import java.io.IOException;
 public class RecordButton extends ToggleStateButton {
 
     private MediaRecorder recorder;
-    private static String filename;
+    private static String filename = "/data/data/de.juffel.simpleaudiorecorder/files/record.3gp";
 
-    public RecordButton(Context context, String filename) {
+    // this constructor is called, when a RecordButton is created in code
+    public RecordButton(Context context) {
         super(context);
+    }
 
-        this.filename = filename;
+    // this constructor is called, when a RecordButton is declared via XML
+    public RecordButton(Context context, AttributeSet attrs) {
+        super(context);
 
         // create Animations
         ButtonAnimation entry = new ButtonAnimation();
@@ -56,6 +61,7 @@ public class RecordButton extends ToggleStateButton {
      * Control audio capture (start & stop)
      */
     private void startRecord() {
+        System.out.println("record file to path " + filename);
         // initialize recorder
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
