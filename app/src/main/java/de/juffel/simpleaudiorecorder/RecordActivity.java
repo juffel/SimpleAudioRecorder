@@ -1,19 +1,7 @@
 package de.juffel.simpleaudiorecorder;
 
 import android.app.Activity;
-import android.graphics.drawable.AnimationDrawable;
-import android.media.Image;
-import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.Animation;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -23,34 +11,16 @@ import org.apache.http.Header;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 // capture Audio Tutorial (via: http://developer.android.com/guide/topics/media/audio-capture.html#audiocapture)
 public class RecordActivity extends Activity {
 
-    private static String FILENAME;
-
-    private MediaRecorder recorder;
-    private MediaPlayer player;
-
-    private Boolean recording;
-    private Boolean playing;
+    static final String FILENAME = "/data/data/de.juffel.simpleaudiorecorder/files/record.3gp";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
-
-        // get path for filename
-        FILENAME = getFilesDir().getAbsolutePath();
-        FILENAME += "/record.3gp";
-        // if no such file exists, touch it
-        try {
-            new File(FILENAME).createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("output recordings to " + FILENAME);
     }
 
     /**
@@ -59,69 +29,13 @@ public class RecordActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (recorder != null) {
-            recorder.release();
-            recorder = null;
-        }
 
-        if (player != null) {
-            player.release();
-            player = null;
-        }
+        // call stop on recorder and player
+        PlayButton pb = (PlayButton) findViewById(R.id.play_button);
+        pb.stopReplay();
+        RecordButton rb = (RecordButton) findViewById(R.id.record_button);
+        rb.stopRecord();
     }
-
-    /**
-     * Control audio capture (start & stop)
-     */
-    private void startRecord() {
-        // initialize recorder
-        recorder = new MediaRecorder();
-        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        recorder.setOutputFile(FILENAME);
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-
-        try {
-            recorder.prepare();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        recorder.start();
-    }
-    private void stopRecord() {
-        recorder.stop();
-        recorder.release();
-        recorder = null; // dunno why this is necessary but it appears in the tut, so i adopt it
-    }
-
-    /**
-     * Control audio playback (start & stop)
-     */
-    /*
-    private void startReplay() {
-        player = new MediaPlayer();
-        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                // reset the replay button to non-playing state(ImageButton) findViewById(R.id.button_record
-                ImageButton playButton = (ImageButton) findViewById(R.id.button_replay);
-                playButton.performClick();
-            }
-        });
-        try {
-            player.setDataSource(FILENAME);
-            player.prepare();
-            player.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    private void stopReplay() {
-        player.release();
-        player = null; // dunno why this is necessary but it appears in the tut, so i adopt it
-    }
-    */
 
     /**
      * Uploads the current recording to the server using the AsyncHttpClient Library
@@ -153,9 +67,5 @@ public class RecordActivity extends Activity {
                 System.out.println("response received with status code " + statusCode);
             }
         });
-    }
-
-    public String getFilename() {
-        return FILENAME;
     }
 }

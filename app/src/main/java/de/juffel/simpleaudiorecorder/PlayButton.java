@@ -12,7 +12,6 @@ import java.io.IOException;
  */
 public class PlayButton extends ToggleStateButton {
 
-    private static final String filename = "/data/data/de.juffel.simpleaudiorecorder/files/record.3gp";
     MediaPlayer player;
 
     // this constructor is called, when a RecordButton is created in code (just for completeness)
@@ -43,6 +42,7 @@ public class PlayButton extends ToggleStateButton {
      * Control audio playback (start & stop)
      */
     private void startReplay() {
+        String filename = RecordActivity.FILENAME;
         player = new MediaPlayer();
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             /**
@@ -62,7 +62,7 @@ public class PlayButton extends ToggleStateButton {
             e.printStackTrace();
         }
     }
-    private void stopReplay() {
+    void stopReplay() {
         player.release();
         player = null; // dunno why this is necessary but it appears in the tut, so i adopt it
     }

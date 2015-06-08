@@ -3,7 +3,6 @@ package de.juffel.simpleaudiorecorder;
 import android.content.Context;
 import android.media.MediaRecorder;
 import android.util.AttributeSet;
-import android.view.View;
 
 import java.io.IOException;
 
@@ -13,7 +12,6 @@ import java.io.IOException;
 public class RecordButton extends ToggleStateButton {
 
     private MediaRecorder recorder;
-    private static final String filename = "/data/data/de.juffel.simpleaudiorecorder/files/record.3gp";
 
     // this constructor is called, when a RecordButton is created in code (just for completeness)
     public RecordButton(Context context) {
@@ -45,6 +43,7 @@ public class RecordButton extends ToggleStateButton {
      * Control audio capture (start & stop)
      */
     private void startRecord() {
+        String filename = RecordActivity.FILENAME;
         System.out.println("record file to path " + filename);
         // initialize recorder
         recorder = new MediaRecorder();
@@ -62,7 +61,7 @@ public class RecordButton extends ToggleStateButton {
         System.out.println("starting to record to file: " + filename);
         recorder.start();
     }
-    private void stopRecord() {
+    void stopRecord() {
         recorder.stop();
         recorder.release();
         recorder = null; // dunno why this is necessary but it appears in the tut, so i adopt it
