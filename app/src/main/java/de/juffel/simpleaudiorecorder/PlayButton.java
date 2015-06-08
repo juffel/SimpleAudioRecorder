@@ -36,7 +36,6 @@ public class PlayButton extends ToggleStateButton {
         } else {
             toEntryState();
         }
-        super.toggle();
     }
 
     @Override

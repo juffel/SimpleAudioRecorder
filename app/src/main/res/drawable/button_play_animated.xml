@@ -1,7 +1,8 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="false">
-    <item android:drawable="@drawable/button_play_01" android:duration="100" />
-    <item android:drawable="@drawable/button_play_02" android:duration="100" />
-    <item android:drawable="@drawable/button_play_03" android:duration="100" />
-    <item android:drawable="@drawable/button_play_00" android:duration="100" />
+    <item android:drawable="@drawable/button_play00" android:duration="50" />
+    <item android:drawable="@drawable/button_play01" android:duration="50" />
+    <item android:drawable="@drawable/button_play02" android:duration="50" />
+    <item android:drawable="@drawable/button_play03" android:duration="50" />
+    <item android:drawable="@drawable/button_play04" android:duration="50" />
 </animation-list>
