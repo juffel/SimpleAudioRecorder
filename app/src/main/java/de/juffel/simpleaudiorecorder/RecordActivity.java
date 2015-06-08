@@ -28,7 +28,7 @@ import java.io.IOException;
 // capture Audio Tutorial (via: http://developer.android.com/guide/topics/media/audio-capture.html#audiocapture)
 public class RecordActivity extends Activity {
 
-    public static String FILENAME;
+    private static String FILENAME;
 
     private MediaRecorder recorder;
     private MediaPlayer player;

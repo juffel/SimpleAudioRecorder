@@ -6,40 +6,9 @@
     <de.juffel.simpleaudiorecorder.RecordButton
         android:id="@+id/record_button"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content" />
-
-    <ImageButton
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:id="@+id/button_record"
+        android:layout_width="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp"
-        android:onClick="record"
-        android:layout_gravity="center_horizontal" />
-
-    <ImageButton
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:id="@+id/button_replay"
-        android:onClick="replay"
-        android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/button_record"
-        android:layout_alignStart="@+id/button_record" />
-
-    <ImageButton
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:id="@+id/button_upload"
-        android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/button_replay"
-        android:layout_alignStart="@+id/button_replay" />
-
-    <Button
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:id="@+id/animation_button"
-        android:src="@drawable/button_play_00"
-        android:layout_below="@+id/button_upload"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="44dp" />
 
 </RelativeLayout>

@@ -9,7 +9,8 @@ import android.graphics.drawable.AnimationDrawable;
 public class ButtonAnimation {
     private Integer entryAnimation;
 
-    public ButtonAnimation() {
+    public ButtonAnimation(Integer entryAnimation) {
+        this.entryAnimation = entryAnimation;
     }
 
     public Integer getEntryAnimation() {

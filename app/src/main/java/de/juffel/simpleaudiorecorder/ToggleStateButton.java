@@ -34,7 +34,7 @@ public class ToggleStateButton extends Button {
     }
 
     /**
-     * Make sure animations were set via setButtonAnimations(...) before calling this method.
+     * Make sure animations were set via setAnimations(...) before calling this method.
      */
     public void toggle() {
         if (state) {
@@ -58,10 +58,14 @@ public class ToggleStateButton extends Button {
 
     /**
      * Set the animations for this Button. Make sure these are set before calling toggle().
+     * @param entry of type Integer represents the resource id, e.g.: R.drawable.animation_entry
+     *              is taken as the default state of the button
+     * @param other of type Integer represents the resource id, e.g.: R.drawable.animation_entry
+     *              is taken as the second state of the button
      */
-    public void setButtonAnimations(ButtonAnimation entry, ButtonAnimation other) {
-        this.entryState = entry;
-        this.otherState = other;
+    public void setAnimations(Integer entry, Integer other) {
+        this.entryState = new ButtonAnimation(entry);
+        this.otherState = new ButtonAnimation(other);
         // initialize button
         state = true;
         // call entry animation of otherState
