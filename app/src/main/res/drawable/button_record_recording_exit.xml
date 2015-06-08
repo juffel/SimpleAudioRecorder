@@ -1,4 +1,4 @@
-<animation-list android:id="@+id/button_record_entry" xmlns:android="http://schemas.android.com/apk/res/android"
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="true">
     <item android:drawable="@drawable/button_record_stop" android:duration="200" />
 </animation-list>
