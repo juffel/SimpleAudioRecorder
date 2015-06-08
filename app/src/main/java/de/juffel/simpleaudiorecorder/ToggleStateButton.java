@@ -2,6 +2,7 @@ package de.juffel.simpleaudiorecorder;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.widget.Button;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class ToggleStateButton extends Button {
     public ToggleStateButton(Context context) {
         super(context);
         state = false;
-        // initialize button with zero frame of animation
+        // initialize button with zero frame of animation in setbuttonAnimations
     }
 
     public Boolean getState() {
@@ -65,5 +66,7 @@ public class ToggleStateButton extends Button {
     public void setButtonAnimations(ButtonAnimation entry, ButtonAnimation other) {
         this.entryState = entry;
         this.otherState = other;
+        Drawable first_frame = entry.getExitAnimation().getFrame(0);
+        this.setBackground(first_frame);
     }
 }
