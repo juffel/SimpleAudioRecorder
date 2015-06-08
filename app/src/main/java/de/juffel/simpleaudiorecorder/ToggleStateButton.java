@@ -50,6 +50,7 @@ public class ToggleStateButton extends Button {
     }
 
     public void toEntryState() {
+        state = true;
         // call animation of entryState
         this.setBackgroundResource(entryState.getEntryAnimation());
         AnimationDrawable anim = (AnimationDrawable) this.getBackground();
@@ -58,6 +59,7 @@ public class ToggleStateButton extends Button {
     }
 
     public void toOtherState() {
+        state = false;
         // call animation of otherState
         this.setBackgroundResource(otherState.getEntryAnimation());
         AnimationDrawable anim = (AnimationDrawable) this.getBackground();

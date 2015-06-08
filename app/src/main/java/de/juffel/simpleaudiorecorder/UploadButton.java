@@ -32,9 +32,7 @@ public class UploadButton extends ToggleStateButton {
     @Override
     public void toggle() {
         if (super.getState()) {
-
-        } else {
-            // if currently in secondary state (continuous animation is running) stop this animation
+            startUpload();
         }
         super.toggle();
     }
@@ -62,11 +60,13 @@ public class UploadButton extends ToggleStateButton {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
                 System.out.println("response received with status code " + statusCode);
+                UploadButton.super.toEntryState();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] bytes, Throwable throwable) {
                 System.out.println("response received with status code " + statusCode);
+                UploadButton.super.toEntryState();
             }
         });
     }
