@@ -31,6 +31,9 @@ public class ToggleStateButton extends Button {
         return state;
     }
 
+    /**
+     * Make sure animations were set via setButtonAnimations(...) before calling this method.
+     */
     public void toggle() {
         if (state) {
             // toggle state
@@ -51,5 +54,13 @@ public class ToggleStateButton extends Button {
             anim.stop(); // maybe unnecessary
             anim.start();
         }
+    }
+
+    /**
+     * Set the animations for this Button. Make sure these are set before calling toggle().
+     */
+    public void setButtonAnimations(ButtonAnimation entry, ButtonAnimation other) {
+        this.entryState = entry;
+        this.otherState = other;
     }
 }
