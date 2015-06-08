@@ -7,17 +7,9 @@ import android.graphics.drawable.AnimationDrawable;
  * Created by Julian on 08/06/15.
  */
 public class ButtonAnimation {
-    private Integer entryAnimation, exitAnimation;
+    private Integer entryAnimation;
 
     public ButtonAnimation() {
-    }
-
-    public Integer getExitAnimation() {
-        return exitAnimation;
-    }
-
-    public void setExitAnimation(Integer exitAnimation) {
-        this.exitAnimation = exitAnimation;
     }
 
     public Integer getEntryAnimation() {

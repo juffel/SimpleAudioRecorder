@@ -26,7 +26,6 @@ public class ToggleStateButton extends Button {
 
     public ToggleStateButton(Context context) {
         super(context);
-        state = false;
         // initialize button with zero frame of animation in setbuttonAnimations
     }
 
@@ -41,19 +40,16 @@ public class ToggleStateButton extends Button {
         if (state) {
             // toggle state
             state = false;
-            // call entry animation of entryState
-            AnimationDrawable entry = entryState.getExitAnimation();
-            this.setBackground(entry);
+            // call exit animation of entryState
+            this.setBackgroundResource(entryState.getEntryAnimation());
             AnimationDrawable anim = (AnimationDrawable) this.getBackground();
             anim.stop(); // maybe unnecessary
-            System.out.println();
             anim.start();
         } else {
             // toggle state
             state = true;
             // call entry animation of otherState
-            AnimationDrawable entry = otherState.getExitAnimation();
-            this.setBackground(entry);
+            this.setBackgroundResource(otherState.getEntryAnimation());
             AnimationDrawable anim = (AnimationDrawable) this.getBackground();
             anim.stop(); // maybe unnecessary
             anim.start();
@@ -66,7 +62,8 @@ public class ToggleStateButton extends Button {
     public void setButtonAnimations(ButtonAnimation entry, ButtonAnimation other) {
         this.entryState = entry;
         this.otherState = other;
-        Drawable first_frame = entry.getExitAnimation().getFrame(0);
-        this.setBackground(first_frame);
+        // initialize button using toggle method
+        state = false;
+        toggle();
     }
 }

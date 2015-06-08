@@ -45,8 +45,20 @@ public class RecordActivity extends Activity {
                 RelativeLayout.LayoutParams.MATCH_PARENT);
 
         RecordButton rbut = new RecordButton(this);
-
         rl.addView(rbut);
+
+
+        Button sbut = new Button(this);
+        sbut.setBackgroundResource(R.drawable.button_play_animated);
+        final AnimationDrawable bgr = (AnimationDrawable) sbut.getBackground();
+        sbut.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bgr.start();
+            }
+        });
+        // rl.addView(sbut);
+
 
         setContentView(rl, params);
     }
