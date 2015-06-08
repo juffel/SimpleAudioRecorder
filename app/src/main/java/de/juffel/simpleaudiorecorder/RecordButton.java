@@ -20,12 +20,17 @@ public class RecordButton extends ToggleStateButton {
 
         // create Animations
         ButtonAnimation entry = new ButtonAnimation();
-        // sorry for using of a deprecated method, but for now its the easiest approach
-        AnimationDrawable animation = (AnimationDrawable) getResources().getDrawable(R.drawable.button_record_idle_exit);
-        entry.setEnterAnimation(animation);
-        entry.setExitAnimation(animation);
-
         ButtonAnimation other = new ButtonAnimation();
+        // sorry for using of a deprecated method, but for now its the easiest approach
+        AnimationDrawable idle_exit = (AnimationDrawable) getResources().getDrawable(R.drawable.button_record_idle_exit);
+        AnimationDrawable idle_entry = (AnimationDrawable) getResources().getDrawable(R.drawable.button_record_idle_entry);
+        entry.setEntryAnimation(idle_entry);
+        entry.setExitAnimation(idle_exit);
+        AnimationDrawable recording_entry = (AnimationDrawable) getResources().getDrawable(R.drawable.button_record_recording_entry);
+        AnimationDrawable recording_exit = (AnimationDrawable) getResources().getDrawable(R.drawable.button_record_recording_exit);
+        other.setEntryAnimation(recording_entry);
+        other.setExitAnimation(recording_exit);
+
         // and set them as this Button's animations
         this.setButtonAnimations(entry, other);
 
