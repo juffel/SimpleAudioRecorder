@@ -63,7 +63,9 @@ public class PlayButton extends ToggleStateButton {
         }
     }
     void stopReplay() {
-        player.release();
-        player = null; // dunno why this is necessary but it appears in the tut, so i adopt it
+        if (player != null) {
+            player.release();
+            player = null; // dunno why this is necessary but it appears in the tut, so i adopt it
+        }
     }
 }

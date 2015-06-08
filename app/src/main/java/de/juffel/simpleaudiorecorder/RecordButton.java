@@ -62,8 +62,10 @@ public class RecordButton extends ToggleStateButton {
         recorder.start();
     }
     void stopRecord() {
-        recorder.stop();
-        recorder.release();
-        recorder = null; // dunno why this is necessary but it appears in the tut, so i adopt it
+        if (recorder != null) {
+            recorder.stop();
+            recorder.release();
+            recorder = null; // dunno why this is necessary but it appears in the tut, so i adopt it
+        }
     }
 }

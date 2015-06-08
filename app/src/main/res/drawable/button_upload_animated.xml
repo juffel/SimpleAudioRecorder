@@ -1,0 +1,10 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+    <item android:drawable="@drawable/button_upload00" android:duration="100" />
+    <item android:drawable="@drawable/button_upload01" android:duration="100" />
+    <item android:drawable="@drawable/button_upload02" android:duration="100" />
+    <item android:drawable="@drawable/button_upload03" android:duration="100" />
+    <item android:drawable="@drawable/button_upload04" android:duration="100" />
+    <item android:drawable="@drawable/button_upload05" android:duration="100" />
+    <item android:drawable="@drawable/button_upload06" android:duration="100" />
+</animation-list>

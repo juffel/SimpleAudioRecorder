@@ -27,7 +27,7 @@ public class ToggleStateButton extends Button {
 
     public ToggleStateButton(Context context) {
         super(context);
-        // initialize button with zero frame of animation in setbuttonAnimations
+        // initialize button is initialized in setAnimations
     }
 
     public Boolean getState() {
