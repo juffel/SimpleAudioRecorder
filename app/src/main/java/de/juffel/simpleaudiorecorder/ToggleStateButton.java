@@ -25,6 +25,8 @@ public class ToggleStateButton extends Button {
 
     public ToggleStateButton(Context context) {
         super(context);
+        state = false;
+        // initialize button with zero frame of animation
     }
 
     public Boolean getState() {
@@ -43,6 +45,7 @@ public class ToggleStateButton extends Button {
             this.setBackground(entry);
             AnimationDrawable anim = (AnimationDrawable) this.getBackground();
             anim.stop(); // maybe unnecessary
+            System.out.println();
             anim.start();
         } else {
             // toggle state

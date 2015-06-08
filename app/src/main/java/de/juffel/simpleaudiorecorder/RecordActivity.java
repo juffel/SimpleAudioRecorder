@@ -12,6 +12,7 @@ import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -37,79 +38,17 @@ public class RecordActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record);
 
-        // get path for filename
-        filename = getFilesDir().getAbsolutePath();
-        filename += "/record.3gp";
-        System.out.println("output recordings to " + filename);
+        RelativeLayout rl = new RelativeLayout(this);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT);
 
-        ///////////////////////////
-        // initialize record button
-        final ImageButton recordButton = (ImageButton) findViewById(R.id.button_record);
-        OnClickListener recordListener = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (recording) {
-                    recordButton.setBackgroundResource(R.drawable.button_record);
-                    stopRecord();
-                } else {
-                    recordButton.setBackgroundResource(R.drawable.button_record_stop);
-                    startRecord();
-                }
-                // toggle recording status
-                recording = !recording;
-            }
-        };
-        recordButton.setBackgroundResource(R.drawable.button_record);
-        recordButton.setOnClickListener(recordListener);
-        recording = false;
+        RecordButton rbut = new RecordButton(this);
 
-        /////////////////////////
-        // initialize play button
-        final ImageButton playButton = (ImageButton) findViewById(R.id.button_replay);
-        OnClickListener playListener = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // toggle play start/stop
-                if (playing) {
-                    playButton.setBackgroundResource(R.drawable.button_play);
-                    stopReplay();
-                } else {
-                    playButton.setBackgroundResource(R.drawable.button_play_stop);
-                    startReplay();
-                }
-                // toggle playing status
-                playing = !playing;
-            }
-        };
-        playButton.setBackgroundResource(R.drawable.button_play);
-        playButton.setOnClickListener(playListener);
-        playing = false;
+        rl.addView(rbut);
 
-        ///////////////////////////
-        // initialize upload button
-        final ImageButton uploadButton = (ImageButton) findViewById(R.id.button_upload);
-        uploadButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startUpload();
-            }
-        });
-        uploadButton.setBackgroundResource(R.drawable.button_upload);
-
-        ///////////////////////////
-        // initialize animation button
-        final Button animationButton = (Button) findViewById(R.id.animation_button);
-        animationButton.setBackgroundResource(R.drawable.button_play_animated);
-        animationButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AnimationDrawable animation = (AnimationDrawable) animationButton.getBackground();
-                animation.stop();
-                animation.start();
-            }
-        });
+        setContentView(rl, params);
     }
 
     /**
