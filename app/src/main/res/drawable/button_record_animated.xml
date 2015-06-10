@@ -1,29 +1,10 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="false">
-    <!--
-    <item android:drawable="@drawable/button_record00" android:duration="100" />
-    <item android:drawable="@drawable/button_record01" android:duration="100" />
-    <item android:drawable="@drawable/button_record02" android:duration="100" />
-    <item android:drawable="@drawable/button_record03" android:duration="100" />
-    <item android:drawable="@drawable/button_record04" android:duration="100" />
-    <item android:drawable="@drawable/button_record05" android:duration="100" />
-    <item android:drawable="@drawable/button_record06" android:duration="100" />
-    <item android:drawable="@drawable/button_record07" android:duration="100" />
-    <item android:drawable="@drawable/button_record08" android:duration="100" />
-    <item android:drawable="@drawable/button_record09" android:duration="100" />
-    -->
-    <item android:drawable="@drawable/mikro_wartet17" android:duration="100" />
-    <item android:drawable="@drawable/mikro_wartet16" android:duration="100" />
-    <item android:drawable="@drawable/mikro_wartet15" android:duration="100" />
-    <item android:drawable="@drawable/mikro_wartet14" android:duration="100" />
-    <item android:drawable="@drawable/mikro_wartet13" android:duration="100" />
-    <item android:drawable="@drawable/mikro_wartet12" android:duration="100" />
-    <item android:drawable="@drawable/mikro_wartet1" android:duration="2000" />
-
-
-
-
-
-
-
+    <item android:drawable="@drawable/mikro_wartet01" android:duration="100" />
+    <item android:drawable="@drawable/mikro_wartet02" android:duration="100" />
+    <item android:drawable="@drawable/mikro_wartet03" android:duration="100" />
+    <item android:drawable="@drawable/mikro_wartet04" android:duration="100" />
+    <item android:drawable="@drawable/mikro_wartet05" android:duration="100" />
+    <item android:drawable="@drawable/mikro_wartet06" android:duration="100" />
+    <item android:drawable="@drawable/mikro_wartet07" android:duration="100" />
 </animation-list>

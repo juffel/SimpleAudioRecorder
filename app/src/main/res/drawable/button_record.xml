@@ -1,36 +1,24 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="true">
-    <!--
-    <item android:drawable="@drawable/record00" android:duration="50" />
-    <item android:drawable="@drawable/record01" android:duration="50" />
-    <item android:drawable="@drawable/record02" android:duration="50" />
-    <item android:drawable="@drawable/record03" android:duration="50" />
-    <item android:drawable="@drawable/record04" android:duration="50" />
-    <item android:drawable="@drawable/record05" android:duration="50" />
-    <item android:drawable="@drawable/record06" android:duration="50" />
-    <item android:drawable="@drawable/record07" android:duration="50" />
-    <item android:drawable="@drawable/record08" android:duration="50" />
-    <item android:drawable="@drawable/record09" android:duration="50" />
-    -->
-    <item android:drawable="@drawable/mikro_kommt21" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt20" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt19" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt18" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt17" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt16" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt15" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt14" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt13" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt12" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt11" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt00" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt01" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt02" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt03" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt04" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt05" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt06" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt07" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt08" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt09" android:duration="50" />
     <item android:drawable="@drawable/mikro_kommt10" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt9" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt8" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt7" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt6" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt5" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt4" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt3" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt2" android:duration="50" />
-    <item android:drawable="@drawable/mikro_kommt" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt11" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt12" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt13" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt14" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt15" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt16" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt17" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt18" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt19" android:duration="50" />
+    <item android:drawable="@drawable/mikro_kommt20" android:duration="50" />
 </animation-list>

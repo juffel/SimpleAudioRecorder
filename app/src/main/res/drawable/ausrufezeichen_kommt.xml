@@ -1,12 +1,12 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="true">
-    <item android:drawable="@drawable/ausrufezeichen_kommt00" android:duration="100" />
-    <item android:drawable="@drawable/ausrufezeichen_kommt01" android:duration="100" />
-    <item android:drawable="@drawable/ausrufezeichen_kommt02" android:duration="100" />
-    <item android:drawable="@drawable/ausrufezeichen_kommt03" android:duration="100" />
-    <item android:drawable="@drawable/ausrufezeichen_kommt04" android:duration="100" />
-    <item android:drawable="@drawable/ausrufezeichen_kommt05" android:duration="100" />
-    <item android:drawable="@drawable/ausrufezeichen_kommt06" android:duration="100" />
-    <item android:drawable="@drawable/ausrufezeichen_kommt07" android:duration="100" />
-    <item android:drawable="@drawable/ausrufezeichen_kommt08" android:duration="100" />
+    <item android:drawable="@drawable/ausrufe_kommt01" android:duration="100" />
+    <item android:drawable="@drawable/ausrufe_kommt02" android:duration="100" />
+    <item android:drawable="@drawable/ausrufe_kommt03" android:duration="100" />
+    <item android:drawable="@drawable/ausrufe_kommt04" android:duration="100" />
+    <item android:drawable="@drawable/ausrufe_kommt05" android:duration="100" />
+    <item android:drawable="@drawable/ausrufe_kommt06" android:duration="100" />
+    <item android:drawable="@drawable/ausrufe_kommt07" android:duration="100" />
+    <item android:drawable="@drawable/ausrufe_kommt08" android:duration="100" />
+    <item android:drawable="@drawable/ausrufe_kommt09" android:duration="100" />
 </animation-list>
