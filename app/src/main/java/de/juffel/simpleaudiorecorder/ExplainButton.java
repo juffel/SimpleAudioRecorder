@@ -33,6 +33,9 @@ public class ExplainButton extends BasicButton {
 
                 // for testing purposes start any other activity
                 final Intent intent = new Intent(context, RecordActivity.class);
+
+                // we start the next Activity from a separate thread, so that we can properly wait for
+                // the Animation to end first. 
                 Runnable startNext = new Runnable() {
                     @Override
                     public void run() {

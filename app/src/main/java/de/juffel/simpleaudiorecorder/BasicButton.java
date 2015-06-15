@@ -32,7 +32,7 @@ public class BasicButton extends Button {
         return time;
     }
 
-    /*each returns the length of it's respective Animation */
+    /*each returns the length of it's respective Animation to use for waiting */
 
     public int triggerEntryAnimation() {
         int waitTime = 0;
