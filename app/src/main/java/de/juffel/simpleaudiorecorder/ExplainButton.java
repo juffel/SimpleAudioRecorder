@@ -1,6 +1,7 @@
 package de.juffel.simpleaudiorecorder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.view.View;
@@ -15,7 +16,7 @@ public class ExplainButton extends BasicButton {
     private MediaPlayer player;
     private static final String filename = "erklaerbaer";
 
-    public ExplainButton(Context context, AttributeSet attrs) {
+    public ExplainButton(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         // set exclamation mark animations, exit animation is null for now
@@ -23,17 +24,19 @@ public class ExplainButton extends BasicButton {
 
         // create MediaPlayer from "raw" resource audio file
         player = MediaPlayer.create(context, R.raw.explanation);
-        /*
         // when the player finishes playing, switch to Home Activity
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             // after completion of the animation, reset button to initial status
             @Override
             public void onCompletion(MediaPlayer mp) {
-                // TODO build Intent and switch Activity
+                // play exit animation
                 ExplainButton.super.triggerExitAnimation();
+
+                // for testing purposes start any other activity
+                Intent intent = new Intent(context, RecordActivity.class);
+                context.startActivity(intent);
             }
         });
-        */
 
         // install clickhandler, play explanatory audio file on click
         this.setOnClickListener(new OnClickListener() {
