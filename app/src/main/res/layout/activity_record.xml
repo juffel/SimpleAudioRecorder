@@ -6,24 +6,22 @@
 
     <de.juffel.simpleaudiorecorder.RecordButton
         android:id="@+id/record_button"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="560px"
+        android:layout_height="320px"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_centerHorizontal="true" />
 
     <de.juffel.simpleaudiorecorder.PlayButton
         android:id="@+id/play_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp" />
+        android:layout_height="320px"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <de.juffel.simpleaudiorecorder.UploadButton
         android:id="@+id/upload_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="380dp" />
-
+        android:layout_width="560px"
+        android:layout_height="320px"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
