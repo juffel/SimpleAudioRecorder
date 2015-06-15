@@ -3,6 +3,7 @@ package de.juffel.simpleaudiorecorder;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -20,7 +21,7 @@ public class ExplainButton extends BasicButton {
         super(context, attrs);
 
         // set exclamation mark animations, exit animation is null for now
-        setAnimations(R.drawable.ausrufezeichen_kommt, R.drawable.ausrufezeichen, null);
+        setAnimations(R.drawable.ausrufezeichen_kommt, R.drawable.ausrufezeichen, R.drawable.ausrufezeichen_kommt);
 
         // create MediaPlayer from "raw" resource audio file
         player = MediaPlayer.create(context, R.raw.explanation);
@@ -29,12 +30,20 @@ public class ExplainButton extends BasicButton {
             // after completion of the animation, reset button to initial status
             @Override
             public void onCompletion(MediaPlayer mp) {
-                // play exit animation
-                ExplainButton.super.triggerExitAnimation();
 
                 // for testing purposes start any other activity
-                Intent intent = new Intent(context, RecordActivity.class);
-                context.startActivity(intent);
+                final Intent intent = new Intent(context, RecordActivity.class);
+                Runnable startNext = new Runnable() {
+                    @Override
+                    public void run() {
+                        context.startActivity(intent);
+                    }
+                };
+                Handler delayHandler = new Handler();
+                // play exit animation
+                int waitTime = ExplainButton.super.triggerExitAnimation();
+                delayHandler.postDelayed(startNext, waitTime);
+                //context.startActivity(intent);
             }
         });
 
