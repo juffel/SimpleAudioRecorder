@@ -5,7 +5,7 @@
     android:background="#404040">
 
     <de.juffel.simpleaudiorecorder.ExplainButton
-        android:id="@+id/play_button"
+        android:id="@+id/explain_button"
         android:layout_width="560px"
         android:layout_height="320px"
         android:layout_centerHorizontal="true"
