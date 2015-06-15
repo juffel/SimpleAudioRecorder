@@ -23,29 +23,49 @@ public class BasicButton extends Button {
         this.exitAnimation = exitAnimation;
     }
 
-    public void triggerEntryAnimation() {
-        if (null != entryAnimation) {
+    private int getAnimationTime(AnimationDrawable anim) {
+        // Hacky solution for waiting for an animationDrawable to end
+        int time = 0;
+        for (int i = 0; i < anim.getNumberOfFrames(); i++) {
+            time += anim.getDuration(i);
+        }
+        return time;
+    }
+
+    /*each returns the length of it's respective Animation */
+
+    public int triggerEntryAnimation() {
+        int waitTime = 0;
+        if (entryAnimation != null) {
             this.setBackgroundResource(entryAnimation);
             AnimationDrawable anim = (AnimationDrawable) this.getBackground();
+            waitTime = getAnimationTime(anim);
             anim.stop(); // maybe unnecessary
             anim.start();
         }
+        return waitTime;
     }
-    public void triggerIdleAnimation() {
-        if (null != idleAnimation) {
+
+    public int triggerIdleAnimation() {
+        int waitTime = 0;
+        if (idleAnimation != null) {
             this.setBackgroundResource(idleAnimation);
             AnimationDrawable anim = (AnimationDrawable) this.getBackground();
+            waitTime = getAnimationTime(anim);
             anim.stop(); // maybe unnecessary
             anim.start();
         }
-
+        return waitTime;
     }
-    public void triggerExitAnimation() {
-        if (null != exitAnimation) {
+    public int triggerExitAnimation() {
+        int waitTime = 0;
+        if (exitAnimation != null) {
             this.setBackgroundResource(exitAnimation);
             AnimationDrawable anim = (AnimationDrawable) this.getBackground();
+            waitTime = getAnimationTime(anim);
             anim.stop(); // maybe unnecessary
             anim.start();
         }
+        return waitTime;
     }
 }

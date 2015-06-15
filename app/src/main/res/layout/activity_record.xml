@@ -4,13 +4,14 @@
     android:layout_gravity="center_horizontal"
     android:background="#404040">
 
+    <!--
     <de.juffel.simpleaudiorecorder.RecordButton
         android:id="@+id/record_button"
         android:layout_width="560px"
         android:layout_height="320px"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0px" />
-
+-->
     <de.juffel.simpleaudiorecorder.PlayButton
         android:id="@+id/play_button"
         android:layout_width="560px"
