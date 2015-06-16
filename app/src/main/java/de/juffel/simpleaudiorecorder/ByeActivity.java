@@ -1,6 +1,7 @@
 package de.juffel.simpleaudiorecorder;
 
 import android.content.Intent;
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 
 import de.juffel.simpleaudiorecorder.R;
 
-public class ByeActivity extends ActionBarActivity {
+public class ByeActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

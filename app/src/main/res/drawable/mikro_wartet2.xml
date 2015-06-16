@@ -4,6 +4,7 @@
     <item android:drawable="@drawable/mikro_wartet202" android:duration="100" />
     <item android:drawable="@drawable/mikro_wartet203" android:duration="100" />
     <item android:drawable="@drawable/mikro_wartet204" android:duration="100" />
+    <!--
     <item android:drawable="@drawable/mikro_wartet205" android:duration="100" />
     <item android:drawable="@drawable/mikro_wartet206" android:duration="100" />
     <item android:drawable="@drawable/mikro_wartet207" android:duration="100" />
@@ -14,4 +15,5 @@
     <item android:drawable="@drawable/mikro_wartet212" android:duration="100" />
     <item android:drawable="@drawable/mikro_wartet213" android:duration="100" />
     <item android:drawable="@drawable/mikro_wartet214" android:duration="100" />
+    -->
 </animation-list>

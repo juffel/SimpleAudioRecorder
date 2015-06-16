@@ -44,7 +44,6 @@ public class ExplainButton extends BasicButton {
                 // play exit animation
                 int waitTime = ExplainButton.super.triggerExitAnimation();
                 delayHandler.postDelayed(startNext, waitTime);
-                //context.startActivity(intent);
             }
         });
 

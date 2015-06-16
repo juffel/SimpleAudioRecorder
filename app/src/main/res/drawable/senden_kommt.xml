@@ -4,6 +4,7 @@
     <item android:drawable="@drawable/senden_kommt02" android:duration="100" />
     <item android:drawable="@drawable/senden_kommt03" android:duration="100" />
     <item android:drawable="@drawable/senden_kommt04" android:duration="100" />
+    <!--
     <item android:drawable="@drawable/senden_kommt05" android:duration="100" />
     <item android:drawable="@drawable/senden_kommt06" android:duration="100" />
     <item android:drawable="@drawable/senden_kommt07" android:duration="100" />
@@ -14,4 +15,5 @@
     <item android:drawable="@drawable/senden_kommt12" android:duration="100" />
     <item android:drawable="@drawable/senden_kommt13" android:duration="100" />
     <item android:drawable="@drawable/senden_kommt14" android:duration="100" />
+    -->
 </animation-list>
