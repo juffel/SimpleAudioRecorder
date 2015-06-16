@@ -11,6 +11,7 @@ import org.apache.http.Header;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by Julian on 08/06/15.
@@ -59,7 +60,14 @@ public class UploadButton extends ToggleStateButton {
         client.post(url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
-                System.out.println("response received with status code " + statusCode);
+                // parse token from response bytes
+                try {
+                    String token = new String(bytes, "UTF-8");
+                    System.out.println("response received with status code " + statusCode + " and token " + token);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                // TODO process response token
                 UploadButton.super.toEntryState();
             }
 
