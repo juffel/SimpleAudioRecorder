@@ -1,4 +1,4 @@
-package de.juffel.simpleaudiorecorder.util;
+package de.juffel.simpleaudiorecorder;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -7,18 +7,18 @@ import android.view.MenuItem;
 
 import de.juffel.simpleaudiorecorder.R;
 
-public class ByeActivity extends ActionBarActivity {
+public class ProcessActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bye);
+        setContentView(R.layout.activity_process);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_bye, menu);
+        getMenuInflater().inflate(R.menu.menu_process, menu);
         return true;
     }
 

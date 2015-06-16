@@ -17,7 +17,6 @@
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -27,15 +26,15 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".util.ProcessActivity"
-            android:label="@string/title_activity_process" >
+            android:name=".ProcessActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".util.ByeActivity"
-            android:label="@string/title_activity_bye" >
+            android:name=".ByeActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

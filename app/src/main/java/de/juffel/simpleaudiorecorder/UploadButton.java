@@ -26,7 +26,7 @@ public class UploadButton extends ToggleStateButton {
     public UploadButton(Context context, AttributeSet attrs) {
         super(context);
 
-        this.setAnimations(R.drawable.ausrufezeichen_kommt, R.drawable.ausrufezeichen);
+        this.setAnimations(R.drawable.ausrufe_kommt, R.drawable.ausrufe);
     }
 
     @Override
