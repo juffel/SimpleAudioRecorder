@@ -14,6 +14,7 @@ import org.apache.http.Header;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by kai on 6/16/15.
@@ -78,7 +79,13 @@ public class UploadButtonNew extends BasicButton {
      * Parses the Token from the received bytes and starts the ByeActivity
      */
     private void processResponse(byte[] bytes) {
-        String token = "ABC";
+        String token = null;
+        try {
+            token = new String(bytes, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         final Intent intent = new Intent(getContext(), ByeActivity.class);
         intent.putExtra("token", token);
 
