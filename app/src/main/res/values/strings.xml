@@ -13,5 +13,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_process">ProcessActivity</string>
+    <string name="title_activity_bye">ByeActivity</string>
 
 </resources>

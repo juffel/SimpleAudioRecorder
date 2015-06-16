@@ -1,0 +1,10 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+    <item android:drawable="@drawable/mikro_wartet11" android:duration="100" />
+    <item android:drawable="@drawable/mikro_wartet12" android:duration="100" />
+    <item android:drawable="@drawable/mikro_wartet13" android:duration="100" />
+    <item android:drawable="@drawable/mikro_wartet14" android:duration="100" />
+    <item android:drawable="@drawable/mikro_wartet15" android:duration="100" />
+    <item android:drawable="@drawable/mikro_wartet16" android:duration="100" />
+    <item android:drawable="@drawable/mikro_wartet17" android:duration="100" />
+</animation-list>

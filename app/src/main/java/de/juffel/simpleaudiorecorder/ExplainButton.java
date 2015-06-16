@@ -7,8 +7,6 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 
-import java.io.IOException;
-
 /**
  * Created by Julian on 15/06/15.
  */
@@ -21,18 +19,18 @@ public class ExplainButton extends BasicButton {
         super(context, attrs);
 
         // set exclamation mark animations, exit animation is null for now
-        setAnimations(R.drawable.ausrufezeichen_kommt, R.drawable.ausrufezeichen, R.drawable.ausrufezeichen_kommt);
-
+        setAnimations(R.drawable.ausrufe_kommt, R.drawable.ausrufe, R.drawable.ausrufe_frage_bottom);
+        // if we return to this button make clickable again
+        setClickable(true);
         // create MediaPlayer from "raw" resource audio file
         player = MediaPlayer.create(context, R.raw.explanation);
         // when the player finishes playing, switch to Home Activity
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            // after completion of the animation, reset button to initial status
             @Override
             public void onCompletion(MediaPlayer mp) {
 
                 // for testing purposes start any other activity
-                final Intent intent = new Intent(context, RecordActivity.class);
+                final Intent intent = new Intent(context, HomeActivity.class);
 
                 // we start the next Activity from a separate thread, so that we can properly wait for
                 // the Animation to end first. 
@@ -58,6 +56,8 @@ public class ExplainButton extends BasicButton {
                 ExplainButton.super.triggerIdleAnimation();
                 // play explanation with Mediaplayer
                 player.start();
+                // prevent multiclick
+                ExplainButton.super.setClickable(false);
             }
         });
 
