@@ -29,6 +29,14 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
+        <activity
+            android:name=".util.ProcessActivity"
+            android:label="@string/title_activity_process" >
+        </activity>
+        <activity
+            android:name=".util.ByeActivity"
+            android:label="@string/title_activity_bye" >
+        </activity>
     </application>
 
 </manifest>

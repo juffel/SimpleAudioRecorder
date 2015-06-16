@@ -32,7 +32,7 @@ public class ExplainButton extends BasicButton {
             public void onCompletion(MediaPlayer mp) {
 
                 // for testing purposes start any other activity
-                final Intent intent = new Intent(context, RecordActivity.class);
+                final Intent intent = new Intent(context, HomeActivity.class);
 
                 // we start the next Activity from a separate thread, so that we can properly wait for
                 // the Animation to end first. 
