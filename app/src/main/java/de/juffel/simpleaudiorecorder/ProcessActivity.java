@@ -1,5 +1,6 @@
 package de.juffel.simpleaudiorecorder;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,7 +8,7 @@ import android.view.MenuItem;
 
 import de.juffel.simpleaudiorecorder.R;
 
-public class ProcessActivity extends ActionBarActivity {
+public class ProcessActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

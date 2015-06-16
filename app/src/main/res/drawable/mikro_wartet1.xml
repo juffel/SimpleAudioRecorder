@@ -5,6 +5,8 @@
     <item android:drawable="@drawable/mikro_wartet13" android:duration="100" />
     <item android:drawable="@drawable/mikro_wartet14" android:duration="100" />
     <item android:drawable="@drawable/mikro_wartet15" android:duration="100" />
+    <!--
     <item android:drawable="@drawable/mikro_wartet16" android:duration="100" />
     <item android:drawable="@drawable/mikro_wartet17" android:duration="100" />
+    -->
 </animation-list>
