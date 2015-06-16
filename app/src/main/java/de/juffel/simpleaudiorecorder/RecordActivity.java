@@ -17,7 +17,7 @@ import java.io.FileNotFoundException;
 public class RecordActivity extends Activity {
 
     static final String FILENAME = "/data/data/de.juffel.simpleaudiorecorder/files/record.3gp";
-    static final String SERVER_URL = "http://192.168.178.22:3000/audio/put_here";
+    static final String SERVER_URL = "http://kaesim.cepheus.uberspace.de:63190/audio/put_here";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
