@@ -34,7 +34,38 @@ public class UploadButtonNew extends BasicButton {
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                startUpload();
+                // startUpload();
+                String url = RecordActivity.SERVER_URL;
+
+                // src: http://loopj.com/android-async-http/ @ Uploading Files with RequestParams
+                // gather parameters and upload file
+                File file = new File(file_path);
+                RequestParams params = new RequestParams();
+                try {
+                    params.put("file", file);
+                } catch(FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                Context context = getContext();
+
+                // send request
+                AsyncHttpClient client = new AsyncHttpClient();
+                client.post(url, params, new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
+                        System.out.println("response received with status code " + statusCode);
+                        UploadButtonNew.super.triggerExitAnimation();
+
+                        processResponse(bytes);
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] bytes, Throwable throwable) {
+                        System.out.println("response received with status code " + statusCode);
+                        UploadButtonNew.super.triggerEntryAnimation();
+                    }
+                });
             }
         });
 
@@ -57,7 +88,7 @@ public class UploadButtonNew extends BasicButton {
             e.printStackTrace();
         }
 
-        Context context = getContext();
+        final Context context = getContext();
 
         // send request
         AsyncHttpClient client = new AsyncHttpClient();
@@ -67,13 +98,45 @@ public class UploadButtonNew extends BasicButton {
                 System.out.println("response received with status code " + statusCode);
                 UploadButtonNew.super.triggerExitAnimation();
 
-                processResponse(bytes);
+                // processResponse(bytes);
+
+                String token = null;
+                try {
+                    token = new String(bytes, "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+                final Intent intent = new Intent(context, ByeActivity.class);
+                intent.putExtra("token", token);
+
+                /*
+                // we start the next Activity from a separate thread, so that we can properly wait for
+                // the Animation to end first.
+                Runnable startNext = new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println("Started to run");
+                        context.startActivity(intent);
+                    }
+                };
+                Handler delayHandler = new Handler();
+                // play exit animation
+                int waitTime = UploadButtonNew.super.triggerExitAnimation();
+                delayHandler.postDelayed(startNext, waitTime);
+                */
+
+                context.startActivity(intent);
+
+                // TODO do some exit action
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] bytes, Throwable throwable) {
                 System.out.println("response received with status code " + statusCode);
                 UploadButtonNew.super.triggerEntryAnimation();
+
+                // mabe error handling
             }
         });
     }
