@@ -17,7 +17,7 @@ public class PlayButtonNew extends BasicButton {
         super(context, attrs);
 
         playing = false;
-        setAnimations(R.drawable.button_play, R.drawable.button_play_stop, R.drawable.button_play);
+        setAnimations(R.drawable.button_play, R.drawable.button_play_animated, R.drawable.button_play);
 
         // install clickhandler, change Activity
         this.setOnClickListener(new OnClickListener() {
