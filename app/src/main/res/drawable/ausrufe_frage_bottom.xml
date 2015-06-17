@@ -1,7 +1,6 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="true">
     <item android:drawable="@drawable/ausrufe_frage001" android:duration="100" />
-    <!--
     <item android:drawable="@drawable/ausrufe_frage002" android:duration="100" />
     <item android:drawable="@drawable/ausrufe_frage003" android:duration="100" />
     <item android:drawable="@drawable/ausrufe_frage004" android:duration="100" />
@@ -11,5 +10,4 @@
     <item android:drawable="@drawable/ausrufe_frage008" android:duration="100" />
     <item android:drawable="@drawable/ausrufe_frage009" android:duration="100" />
     <item android:drawable="@drawable/ausrufe_frage010" android:duration="100" />
-    -->
 </animation-list>

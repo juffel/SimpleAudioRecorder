@@ -1,6 +1,5 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="true">
-    <!--
     <item android:drawable="@drawable/mikro_kommt000" android:duration="50" />
     <item android:drawable="@drawable/mikro_kommt001" android:duration="50" />
     <item android:drawable="@drawable/mikro_kommt002" android:duration="50" />
@@ -21,6 +20,5 @@
     <item android:drawable="@drawable/mikro_kommt017" android:duration="50" />
     <item android:drawable="@drawable/mikro_kommt018" android:duration="50" />
     <item android:drawable="@drawable/mikro_kommt019" android:duration="50" />
-    -->
     <item android:drawable="@drawable/mikro_kommt020" android:duration="50" />
 </animation-list>

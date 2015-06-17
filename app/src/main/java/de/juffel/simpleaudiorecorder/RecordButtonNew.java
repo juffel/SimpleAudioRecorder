@@ -2,6 +2,7 @@ package de.juffel.simpleaudiorecorder;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaRecorder;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -50,6 +51,8 @@ public class RecordButtonNew extends BasicButton {
                         @Override
                         public void run() {
                             context.startActivity(intent);
+                            ((AnimationDrawable)RecordButtonNew.super.getBackground()).stop();
+                            RecordButtonNew.super.setBackground(null);
                         }
                     };
                     Handler delayHandler = new Handler();

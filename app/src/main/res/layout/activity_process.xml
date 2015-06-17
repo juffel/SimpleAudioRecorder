@@ -4,7 +4,12 @@
     android:layout_gravity="center_horizontal"
     android:background="@color/background">
 
-
+    <de.juffel.simpleaudiorecorder.PlayButtonNew
+        android:id="@+id/upload_button"
+        android:layout_width="560px"
+        android:layout_height="320px"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="320px" />
 
     <de.juffel.simpleaudiorecorder.UploadButtonNew
         android:id="@+id/upload_button"

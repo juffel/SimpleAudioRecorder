@@ -2,6 +2,7 @@ package de.juffel.simpleaudiorecorder;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
@@ -28,6 +29,8 @@ public class HelpButton extends BasicButton {
                     @Override
                     public void run() {
                         context.startActivity(intent);
+                        ((AnimationDrawable)HelpButton.super.getBackground()).stop();
+                        HelpButton.super.setBackground(null);
                     }
                 };
                 Handler delayHandler = new Handler();
