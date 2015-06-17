@@ -19,7 +19,7 @@ public class ByeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bye);
-        
+
         Intent intent = getIntent();
         String token = intent.getStringExtra("token");
         System.out.println(token);
