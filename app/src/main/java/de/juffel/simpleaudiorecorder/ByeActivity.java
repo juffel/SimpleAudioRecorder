@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import de.juffel.simpleaudiorecorder.R;
@@ -17,18 +20,17 @@ public class ByeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bye);
 
-        // fetch token from passed parameters
-        Intent intent = getIntent();
-
-        String token = intent.getStringExtra("token");
+        // String token = intent.getStringExtra("token");
+        String token = "ABC";
         System.out.println(token);
-        Character t0 = token.charAt(0);
-        Character t1 = token.charAt(1);
-        Character t2 = token.charAt(2);
 
-        TextView v0 = (TextView) findViewById(R.id.token_1);
-        TextView v1 = (TextView) findViewById(R.id.token_2);
-        TextView v2 = (TextView) findViewById(R.id.token_3);
+        String t0 = token.substring(0,1);
+        String t1 = token.substring(1,2);
+        String t2 = token.substring(2,3);
+
+        TextView v0 = (TextView) findViewById(R.id.token1);
+        TextView v1 = (TextView) findViewById(R.id.token2);
+        TextView v2 = (TextView) findViewById(R.id.token3);
 
         v0.setText(t0);
         v1.setText(t1);
