@@ -94,6 +94,7 @@ public class UploadButtonNew extends BasicButton {
         Runnable startNext = new Runnable() {
             @Override
             public void run() {
+                System.out.println("Started to run");
                 UploadButtonNew.super.getContext().startActivity(intent);
             }
         };

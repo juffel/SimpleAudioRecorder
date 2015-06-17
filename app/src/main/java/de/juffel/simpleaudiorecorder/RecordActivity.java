@@ -16,7 +16,7 @@ import java.io.FileNotFoundException;
 // capture Audio Tutorial (via: http://developer.android.com/guide/topics/media/audio-capture.html#audiocapture)
 public class RecordActivity extends Activity {
 
-    static final String FILENAME = "/data/data/de.juffel.simpleaudiorecorder/files/record.3gp";
+    static final String FILENAME = "record.3gp";
     static final String SERVER_URL = "http://kaesim.cepheus.uberspace.de:63190/audio/put_here";
 
     @Override

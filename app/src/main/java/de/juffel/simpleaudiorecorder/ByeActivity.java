@@ -21,6 +21,7 @@ public class ByeActivity extends Activity {
         Intent intent = getIntent();
 
         String token = intent.getStringExtra("token");
+        System.out.println(token);
         Character t0 = token.charAt(0);
         Character t1 = token.charAt(1);
         Character t2 = token.charAt(2);
