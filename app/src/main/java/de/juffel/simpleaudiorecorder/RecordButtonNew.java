@@ -8,12 +8,15 @@ import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
  * Created by kai on 6/16/15.
  */
 public class RecordButtonNew extends BasicButton {
+
+    private static String file_path;
 
     private MediaRecorder recorder;
     boolean recording;
@@ -25,7 +28,7 @@ public class RecordButtonNew extends BasicButton {
 
         setAnimations(R.drawable.mikro_kommt, R.drawable.mikro_wartet1, R.drawable.mikro_wartet2);
 
-
+        file_path = context.getFilesDir() + RecordActivity.FILENAME;
 
         // install clickhandler, change Activity
         this.setOnClickListener(new OnClickListener() {
@@ -34,8 +37,8 @@ public class RecordButtonNew extends BasicButton {
 
                 if (!recording) {
                     triggerIdleAnimation();
-                    startRecord();
                     recording = true;
+                    startRecord();
                 } else {
                     stopRecord();
                     recording = false;
@@ -66,24 +69,22 @@ public class RecordButtonNew extends BasicButton {
      * Control audio capture (start & stop)
      */
     private void startRecord() {
-        String filename = RecordActivity.FILENAME;
-        String path = getContext().getFilesDir() + filename;
-        System.out.println("record file to path " + filename);
+        System.out.println("record file to path " + file_path);
         // initialize recorder
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        recorder.setOutputFile(filename);
+        recorder.setOutputFile(file_path);
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
         try {
-            //recorder.prepare();
-
-            System.out.println("starting to record to file: " + filename);
-            recorder.start();
+            recorder.prepare();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("starting to record to file: " + file_path);
+        recorder.start();
     }
     void stopRecord() {
         if (recorder != null) {
