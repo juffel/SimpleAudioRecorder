@@ -21,10 +21,14 @@ import java.io.UnsupportedEncodingException;
  */
 public class UploadButtonNew extends BasicButton {
 
+    private static String file_path;
+
     public UploadButtonNew(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         setAnimations(R.drawable.senden_kommt, R.drawable.senden_wartet, R.drawable.senden_kommt);
+
+        file_path = context.getFilesDir() + RecordActivity.FILENAME;
 
         // install clickhandler, change Activity
         this.setOnClickListener(new OnClickListener() {
@@ -42,7 +46,6 @@ public class UploadButtonNew extends BasicButton {
      */
     private void startUpload() {
         String url = RecordActivity.SERVER_URL;
-        String file_path = RecordActivity.FILENAME;
 
         // src: http://loopj.com/android-async-http/ @ Uploading Files with RequestParams
         // gather parameters and upload file
