@@ -22,6 +22,8 @@ public class ByeActivity extends Activity {
 
         String token = intent.getStringExtra("token");
         System.out.println(token);
+
+        /*
         Character t0 = token.charAt(0);
         Character t1 = token.charAt(1);
         Character t2 = token.charAt(2);
@@ -32,7 +34,7 @@ public class ByeActivity extends Activity {
 
         v0.setText(t0);
         v1.setText(t1);
-        v2.setText(t2);
+        v2.setText(t2); */
     }
 
     @Override
