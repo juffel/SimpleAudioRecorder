@@ -21,11 +21,6 @@
         <item name="android:background">@android:drawable/bottom_bar</item>
     </style>
 
-    <!-- disable animations on Activity switch -->
-    <style name="noAnimTheme" parent="android:Theme">
-        <item name="android:windowAnimationStyle">@null</item>
-    </style>
-
     <!-- Backward-compatible version of ?android:attr/buttonBarButtonStyle -->
     <style name="ButtonBarButton" />
 
