@@ -2,6 +2,7 @@ package de.juffel.simpleaudiorecorder;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -38,12 +39,15 @@ public class ExplainButton extends BasicButton {
                     @Override
                     public void run() {
                         context.startActivity(intent);
+                        ((AnimationDrawable)ExplainButton.super.getBackground()).stop();
+                        ExplainButton.super.setBackground(null);
                     }
                 };
                 Handler delayHandler = new Handler();
                 // play exit animation
                 int waitTime = ExplainButton.super.triggerExitAnimation();
                 delayHandler.postDelayed(startNext, waitTime);
+
             }
         });
 
