@@ -7,8 +7,9 @@ import android.app.Activity;
  */
 public class ActivityZiegel extends Activity {
 
-    static final String FILENAME = "record.3gp";
-    static final String SERVER_URL = "http://kaesim.cepheus.uberspace.de:63190/audio/put_here";
+    static final String FILENAME = "record.aac";
+    // static final String SERVER_URL = "http://kaesim.cepheus.uberspace.de:63190/audio/put_here";
+    static final String SERVER_URL = "http://varuna.fritz.box:3000/audio/put_here";
 
     @Override
     public void onBackPressed() {
