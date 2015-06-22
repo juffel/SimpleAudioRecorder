@@ -34,12 +34,12 @@
             android:name=".ActivityZiegelBye"
             android:screenOrientation="portrait">
         </activity>
+        <!-- receiver to trigger launch on boot event -->
+        <receiver android:name=".BootReceiver">
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
     </application>
-
-    <receiver android:name=".BootReceiver">
-        <intent-filter >
-            <action android:name="android.intent.action.BOOT_COMPLETED"/>
-        </intent-filter>
-    </receiver>
 
 </manifest>
