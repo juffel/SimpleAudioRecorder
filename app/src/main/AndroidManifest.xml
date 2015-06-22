@@ -6,13 +6,14 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
         android:largeHeap="true"
         android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" >
         <activity
-            android:name=".HelloActivity"
+            android:name=".ActivityZiegelHello"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
@@ -22,21 +23,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RecordActivity"
+            android:name=".ActivityZiegelHome"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".HomeActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ProcessActivity"
+            android:name=".ActivityZiegelProcess"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ByeActivity"
+            android:name=".ActivityZiegelBye"
             android:screenOrientation="portrait">
         </activity>
     </application>
+
+    <receiver android:name=".BootReceiver">
+        <intent-filter >
+            <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        </intent-filter>
+    </receiver>
 
 </manifest>

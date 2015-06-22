@@ -28,14 +28,14 @@ public class UploadButton extends BasicButton {
 
         setAnimations(R.drawable.senden_kommt, R.drawable.senden_wartet, R.drawable.senden_kommt);
 
-        file_path = context.getFilesDir() + RecordActivity.FILENAME;
+        file_path = context.getFilesDir() + ActivityZiegel.FILENAME;
 
         // install clickhandler, change Activity
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 // startUpload();
-                String url = RecordActivity.SERVER_URL;
+                String url = ActivityZiegel.SERVER_URL;
 
                 triggerIdleAnimation();
 
@@ -45,7 +45,7 @@ public class UploadButton extends BasicButton {
                 RequestParams params = new RequestParams();
                 try {
                     params.put("file", file);
-                } catch(FileNotFoundException e) {
+                } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
 
@@ -78,7 +78,7 @@ public class UploadButton extends BasicButton {
      * Uploads the current recording to the server using the AsyncHttpClient Library
      */
     private void startUpload() {
-        String url = RecordActivity.SERVER_URL;
+        String url = ActivityZiegel.SERVER_URL;
 
         // src: http://loopj.com/android-async-http/ @ Uploading Files with RequestParams
         // gather parameters and upload file
@@ -109,7 +109,7 @@ public class UploadButton extends BasicButton {
                     e.printStackTrace();
                 }
 
-                final Intent intent = new Intent(context, ByeActivity.class);
+                final Intent intent = new Intent(context, ActivityZiegelBye.class);
                 intent.putExtra("token", token);
 
                 context.startActivity(intent);
@@ -126,7 +126,7 @@ public class UploadButton extends BasicButton {
     }
 
     /**
-     * Parses the Token from the received bytes and starts the ByeActivity
+     * Parses the Token from the received bytes and starts the ActivityZiegelBye
      */
     private void processResponse(byte[] bytes) {
         String token = null;
@@ -136,7 +136,7 @@ public class UploadButton extends BasicButton {
             e.printStackTrace();
         }
 
-        final Intent intent = new Intent(getContext(), ByeActivity.class);
+        final Intent intent = new Intent(getContext(), ActivityZiegelBye.class);
         intent.putExtra("token", token);
 
         // we start the next Activity from a separate thread, so that we can properly wait for

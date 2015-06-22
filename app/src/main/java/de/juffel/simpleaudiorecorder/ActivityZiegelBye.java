@@ -1,19 +1,12 @@
 package de.juffel.simpleaudiorecorder;
 
 import android.content.Intent;
-import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
-import de.juffel.simpleaudiorecorder.R;
-
-public class ByeActivity extends Activity {
+public class ActivityZiegelBye extends ActivityZiegel {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
