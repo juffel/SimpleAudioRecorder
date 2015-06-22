@@ -1,55 +1,81 @@
 package de.juffel.simpleaudiorecorder;
 
-import  android.content.Context;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaRecorder;
+import android.os.Handler;
 import android.util.AttributeSet;
+import android.view.View;
 
 import java.io.IOException;
 
 /**
- * Created by Julian on 08/06/15.
+ * Created by kai on 6/16/15.
  */
-public class RecordButton extends ToggleStateButton {
+public class RecordButton extends BasicButton {
+
+    private static String file_path;
 
     private MediaRecorder recorder;
+    private Boolean recording;
 
-    // this constructor is called, when a RecordButton is created in code (just for completeness)
-    public RecordButton(Context context) {
-        super(context);
-    }
+    public RecordButton(final Context context, AttributeSet attrs) {
+        super(context, attrs);
 
-    // this constructor is called, when a RecordButton is declared via XML
-    public RecordButton(Context context, AttributeSet attrs) {
-        super(context);
+        recording = false;
 
-        // set this Button's animations
-        this.setAnimations(R.drawable.mikro_kommt, R.drawable.mikro_wartet1);
-    }
+        setAnimations(R.drawable.mikro_kommt, R.drawable.mikro_wartet1, R.drawable.mikro_wartet2);
 
-    /**
-     * Toggles the state of this Button and adjusts the resource Background
-     */
-    @Override
-    public void toggle() {
-        if (super.getState()) {
-            startRecord();
-        } else {
-            stopRecord();
-        }
-        super.toggle();
+        file_path = context.getFilesDir() + RecordActivity.FILENAME;
+
+        // install clickhandler, change Activity
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (!recording) {
+                    triggerIdleAnimation();
+                    recording = true;
+                    startRecord();
+                } else {
+                    stopRecord();
+                    recording = false;
+                    final Intent intent = new Intent(context, ProcessActivity.class);
+
+                    // we start the next Activity from a separate thread, so that we can properly wait for
+                    // the Animation to end first.
+                    Runnable startNext = new Runnable() {
+                        @Override
+                        public void run() {
+                            context.startActivity(intent);
+                            ((AnimationDrawable) RecordButton.super.getBackground()).stop();
+                            RecordButton.super.setBackground(null);
+                        }
+                    };
+                    Handler delayHandler = new Handler();
+                    // play exit animation
+                    int waitTime = RecordButton.super.triggerExitAnimation();
+                    delayHandler.postDelayed(startNext, waitTime);
+                }
+
+            }
+        });
+
+        triggerEntryAnimation();
+
     }
 
     /**
      * Control audio capture (start & stop)
      */
     private void startRecord() {
-        String filename = RecordActivity.FILENAME;
-        System.out.println("record file to path " + filename);
+        System.out.println("record file to path " + file_path);
         // initialize recorder
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        recorder.setOutputFile(filename);
+        recorder.setOutputFile(file_path);
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
         try {
@@ -58,7 +84,7 @@ public class RecordButton extends ToggleStateButton {
             e.printStackTrace();
         }
 
-        System.out.println("starting to record to file: " + filename);
+        System.out.println("starting to record to file: " + file_path);
         recorder.start();
     }
     void stopRecord() {
@@ -68,4 +94,5 @@ public class RecordButton extends ToggleStateButton {
             recorder = null; // dunno why this is necessary but it appears in the tut, so i adopt it
         }
     }
+
 }

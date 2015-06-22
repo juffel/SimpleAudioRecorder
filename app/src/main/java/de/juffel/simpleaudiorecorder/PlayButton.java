@@ -1,63 +1,52 @@
 package de.juffel.simpleaudiorecorder;
 
 import android.content.Context;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
-import android.widget.ImageButton;
+import android.view.View;
 
 import java.io.IOException;
 
 /**
- * Created by Julian on 08/06/15.
+ * Created by kai on 6/16/15.
  */
-public class PlayButton extends ToggleStateButton {
+public class PlayButton extends BasicButton {
 
-    MediaPlayer player;
+    private static String file_path;
 
-    // this constructor is called, when a RecordButton is created in code (just for completeness)
-    public PlayButton(Context context) {
-        super(context);
+    private MediaPlayer player;
+    private Boolean playing;
+
+    public PlayButton(final Context context, AttributeSet attrs) {
+        super(context, attrs);
+
+        playing = false;
+
+        setAnimations(R.drawable.button_play, R.drawable.button_play_animated, R.drawable.button_play);
+
+        file_path = context.getFilesDir() + RecordActivity.FILENAME;
+
+        // install clickhandler, change Activity
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (playing) {
+                    playing = false;
+                    stopPlay();
+                    triggerEntryAnimation();
+                } else {
+                    playing = true;
+                    startPlay();
+                    triggerIdleAnimation();
+                }
+
+            }
+
+        });
+        triggerEntryAnimation();
     }
 
-    // this constructor is called, when a RecordButton is created in XMl
-    public PlayButton(Context context, AttributeSet attrs) {
-        super(context);
-
-        // declare Button's animations
-        this.setAnimations(R.drawable.button_play, R.drawable.button_play_animated);
-    }
-
-    @Override
-    public void toggle() {
-        // do play and stop stuff here
-        if (super.getState()) {
-            toOtherState();
-        } else {
-            toEntryState();
-        }
-    }
-
-    @Override
-    public void toEntryState() {
-        stopReplay();
-        super.toEntryState();
-    }
-
-    @Override
-    public void toOtherState() {
-        startReplay();
-        super.toOtherState();
-    }
-
-    /**
-     * Control audio playback (start & stop)
-     */
-    private void startReplay() {
-        // stop possibly running mediaplayer
-        stopReplay();
-
-        String filename = RecordActivity.FILENAME;
+    private void startPlay() {
         player = new MediaPlayer();
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             /**
@@ -66,18 +55,20 @@ public class PlayButton extends ToggleStateButton {
              */
             @Override
             public void onCompletion(MediaPlayer mp) {
-                toEntryState();
+                // trigger click on completion, so the button returns to it's initial state
+                PlayButton.super.performClick();
             }
         });
         try {
-            player.setDataSource(filename);
+            player.setDataSource(file_path);
             player.prepare();
             player.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    void stopReplay() {
+
+    private void stopPlay() {
         if (player != null) {
             player.release();
             player = null; // dunno why this is necessary but it appears in the tut, so i adopt it
