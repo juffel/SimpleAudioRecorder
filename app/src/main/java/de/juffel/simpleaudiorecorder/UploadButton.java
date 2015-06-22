@@ -37,6 +37,8 @@ public class UploadButton extends BasicButton {
                 // startUpload();
                 String url = RecordActivity.SERVER_URL;
 
+                triggerIdleAnimation();
+
                 // src: http://loopj.com/android-async-http/ @ Uploading Files with RequestParams
                 // gather parameters and upload file
                 File file = new File(file_path);

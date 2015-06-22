@@ -35,12 +35,13 @@ public class RecordButton extends BasicButton {
             public void onClick(View v) {
 
                 if (!recording) {
-                    triggerIdleAnimation();
                     recording = true;
+                    triggerIdleAnimation();
                     startRecord();
                 } else {
-                    stopRecord();
                     recording = false;
+                    triggerEntryAnimation();
+                    stopRecord();
                     final Intent intent = new Intent(context, ProcessActivity.class);
 
                     // we start the next Activity from a separate thread, so that we can properly wait for
