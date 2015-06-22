@@ -20,7 +20,7 @@ public class RecordButtonNew extends BasicButton {
     private static String file_path;
 
     private MediaRecorder recorder;
-    boolean recording;
+    private Boolean recording;
 
     public RecordButtonNew (final Context context, AttributeSet attrs) {
         super(context, attrs);
