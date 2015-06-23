@@ -22,7 +22,7 @@ public class PlayButton extends BasicButton {
 
         playing = false;
 
-        setAnimations(R.drawable.button_play, R.drawable.button_play_animated, R.drawable.button_play);
+        setAnimations(R.drawable.play, R.drawable.playing, R.drawable.play);
 
         file_path = context.getFilesDir() + RecordActivity.FILENAME;
 

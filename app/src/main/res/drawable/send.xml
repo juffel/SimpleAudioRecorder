@@ -1,6 +1,4 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="true">
-
-    <item android:drawable="@drawable/question" android:duration="100" />
-
+    <item android:drawable="@drawable/send_4_10" android:duration="100" />
 </animation-list>

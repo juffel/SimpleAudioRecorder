@@ -7,8 +7,6 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 
-import de.juffel.simpleaudiorecorder.BasicButton;
-
 /**
  * Created by Julian on 22/06/15.
  */
@@ -17,7 +15,7 @@ public class BackToRecordButton extends BasicButton {
     public BackToRecordButton(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        setAnimations(R.drawable.back_to_record, null, null);
+        setAnimations(R.drawable.back, null, null);
 
         this.setOnClickListener(new OnClickListener() {
             @Override

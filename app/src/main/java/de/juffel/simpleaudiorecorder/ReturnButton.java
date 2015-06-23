@@ -14,7 +14,7 @@ public class ReturnButton extends BasicButton {
     public ReturnButton(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        setAnimations(R.drawable.button_play, R.drawable.button_play_animated, R.drawable.button_play_animated);
+        setAnimations(R.drawable.back, R.drawable.back, R.drawable.back);
 
         // install clickhandler, change Activity
         this.setOnClickListener(new OnClickListener() {

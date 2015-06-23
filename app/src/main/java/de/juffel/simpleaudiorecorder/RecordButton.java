@@ -25,7 +25,7 @@ public class RecordButton extends BasicButton {
 
         recording = false;
 
-        setAnimations(R.drawable.mikro_kommt, R.drawable.mikro_wartet1, R.drawable.mikro_wartet2);
+        setAnimations(R.drawable.mic, R.drawable.mic_animated, R.drawable.mic);
 
         file_path = context.getFilesDir() + RecordActivity.FILENAME;
 

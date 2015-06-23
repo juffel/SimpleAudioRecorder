@@ -26,7 +26,7 @@ public class UploadButton extends BasicButton {
     public UploadButton(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        setAnimations(R.drawable.senden_kommt, R.drawable.senden_wartet, R.drawable.senden_kommt);
+        setAnimations(R.drawable.send, R.drawable.send_animated, R.drawable.send);
 
         file_path = context.getFilesDir() + RecordActivity.FILENAME;
 

@@ -15,7 +15,7 @@ public class HelpButton extends BasicButton {
     public HelpButton(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        setAnimations(R.drawable.ausrufe_frage_top, R.drawable.senden_wartet, R.drawable.ausrufe_frage_top);
+        setAnimations(R.drawable.question, null, null);
 
         // install clickhandler, change Activity
         this.setOnClickListener(new OnClickListener() {

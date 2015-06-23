@@ -20,7 +20,7 @@ public class ExplainButton extends BasicButton {
         super(context, attrs);
 
         // set exclamation mark animations, exit animation is null for now
-        setAnimations(R.drawable.ausrufe_kommt, R.drawable.ausrufe, R.drawable.ausrufe_frage_bottom);
+        setAnimations(R.drawable.question, R.drawable.playing, null);
         // if we return to this button make clickable again
         setClickable(true);
         // create MediaPlayer from "raw" resource audio file
