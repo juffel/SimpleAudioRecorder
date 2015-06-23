@@ -7,8 +7,6 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 
-import de.juffel.simpleaudiorecorder.BasicButton;
-
 /**
  * Created by Julian on 22/06/15.
  */
@@ -22,7 +20,7 @@ public class BackToRecordButton extends BasicButton {
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent intent = new Intent(context, HomeActivity.class);
+                final Intent intent = new Intent(context, ActivityZiegelHome.class);
 
                 // we start the next Activity from a separate thread, so that we can properly wait for
                 // the Animation to end first.
