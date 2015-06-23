@@ -7,32 +7,25 @@
     android:background="@color/background"
     tools:context="de.juffel.simpleaudiorecorder.ByeActivity">
 
-    <TextView
+    <de.juffel.simpleaudiorecorder.TokenButton
+        android:id="@+id/token0"
+        android:layout_width="wrap_content"
+        android:layout_height="264px"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0px" />
+
+    <de.juffel.simpleaudiorecorder.TokenButton
         android:id="@+id/token1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="264px"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100px"
-        android:textSize="30dp" />
+        android:layout_marginTop="348px" />
 
-    <TextView
+    <de.juffel.simpleaudiorecorder.TokenButton
         android:id="@+id/token2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="264px"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="420px"
-        android:capitalize="characters"
-        android:maxLength="1"
-        android:textSize="30dp" />
-
-    <TextView
-        android:id="@+id/token3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="740px"
-        android:capitalize="characters"
-        android:maxLength="1"
-        android:textSize="30dp" />
+        android:layout_marginTop="696px" />
 
 </RelativeLayout>

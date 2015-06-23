@@ -2,6 +2,7 @@ package de.juffel.simpleaudiorecorder;
 
 import android.content.Intent;
 import android.app.Activity;
+import android.media.session.MediaSession;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,17 +25,17 @@ public class ByeActivity extends Activity {
         String token = intent.getStringExtra("token");
         System.out.println(token);
 
-        String t0 = token.substring(0,1);
-        String t1 = token.substring(1,2);
-        String t2 = token.substring(2,3);
+        Integer t0 = Integer.parseInt(token.substring(0, 1));
+        Integer t1 = Integer.parseInt(token.substring(1,2));
+        Integer t2 = Integer.parseInt(token.substring(2,3));
 
-        TextView v0 = (TextView) findViewById(R.id.token1);
-        TextView v1 = (TextView) findViewById(R.id.token2);
-        TextView v2 = (TextView) findViewById(R.id.token3);
+        TokenButton b0 = (TokenButton) findViewById(R.id.token0);
+        TokenButton b1 = (TokenButton) findViewById(R.id.token1);
+        TokenButton b2 = (TokenButton) findViewById(R.id.token2);
 
-        v0.setText(t0);
-        v1.setText(t1);
-        v2.setText(t2);
+        b0.setNumber(t0);
+        b1.setNumber(t1);
+        b2.setNumber(t2);
     }
 
     @Override
