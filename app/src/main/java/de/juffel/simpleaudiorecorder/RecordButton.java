@@ -27,7 +27,7 @@ public class RecordButton extends BasicButton {
 
         setAnimations(R.drawable.mic, R.drawable.mic_animated, R.drawable.mic);
 
-        file_path = context.getFilesDir() + RecordActivity.FILENAME;
+        file_path = context.getFilesDir() + ActivityZiegel.FILENAME;
 
         // install clickhandler, change Activity
         this.setOnClickListener(new OnClickListener() {
@@ -42,7 +42,7 @@ public class RecordButton extends BasicButton {
                     recording = false;
                     triggerEntryAnimation();
                     stopRecord();
-                    final Intent intent = new Intent(context, ProcessActivity.class);
+                    final Intent intent = new Intent(context, ActivityZiegelProcess.class);
 
                     // we start the next Activity from a separate thread, so that we can properly wait for
                     // the Animation to end first.
@@ -75,9 +75,9 @@ public class RecordButton extends BasicButton {
         // initialize recorder
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.AAC_ADTS);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
         recorder.setOutputFile(file_path);
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
         try {
             recorder.prepare();

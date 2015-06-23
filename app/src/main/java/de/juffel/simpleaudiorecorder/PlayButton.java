@@ -24,7 +24,7 @@ public class PlayButton extends BasicButton {
 
         setAnimations(R.drawable.play, R.drawable.playing, R.drawable.play);
 
-        file_path = context.getFilesDir() + RecordActivity.FILENAME;
+        file_path = context.getFilesDir() + ActivityZiegel.FILENAME;
 
         // install clickhandler, change Activity
         this.setOnClickListener(new OnClickListener() {
