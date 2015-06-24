@@ -15,5 +15,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_process">ProcessActivity</string>
     <string name="title_activity_bye">ByeActivity</string>
+    <string name="title_activity_activity_ziegel_story">ActivityZiegelStory</string>
 
 </resources>
