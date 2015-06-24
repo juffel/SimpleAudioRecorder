@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="de.juffel.simpleaudiorecorder.ActivityZiegelStory">
+
+    <de.juffel.simpleaudiorecorder.BackToRecordButton
+        android:id="@+id/back_to_record_button2"
+        android:layout_width="560px"
+        android:layout_height="264px"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0px" />
+
+    <de.juffel.simpleaudiorecorder.PlayButton
+        android:id="@+id/play_button"
+        android:layout_width="560px"
+        android:layout_height="264px"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/back_to_record_button2"
+        android:layout_marginTop="84px" />
+
+</RelativeLayout>
