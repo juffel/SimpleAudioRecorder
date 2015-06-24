@@ -7,21 +7,23 @@
     <de.juffel.simpleaudiorecorder.BackToRecordButton
         android:id="@+id/back_to_record_button"
         android:layout_width="560px"
-        android:layout_height="320px"
+        android:layout_height="264px"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0px" />
 
     <de.juffel.simpleaudiorecorder.PlayButton
         android:id="@+id/play_button"
         android:layout_width="560px"
-        android:layout_height="320px"
+        android:layout_height="264px"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="320px" />
+        android:layout_below="@+id/back_to_record_button"
+        android:layout_marginTop="84px" />
 
     <de.juffel.simpleaudiorecorder.UploadButton
         android:id="@+id/upload_button"
         android:layout_width="560px"
-        android:layout_height="320px"
+        android:layout_height="264px"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="640px" />
+        android:layout_below="@+id/play_button"
+        android:layout_marginTop="84px" />
 </RelativeLayout>
