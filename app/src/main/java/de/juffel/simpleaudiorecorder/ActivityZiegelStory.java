@@ -19,6 +19,10 @@ public class ActivityZiegelStory extends ActivityZiegel {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story);
+    }
+
+    protected void onResume() {
+        super.onResume();
         playRandomStory();
     }
 
@@ -66,17 +70,8 @@ public class ActivityZiegelStory extends ActivityZiegel {
             e.printStackTrace();
         }
 
-        Uri uri = Uri.parse(url);
-
-        System.out.println("starting to play story from url " + url);
-        MediaPlayer player = MediaPlayer.create(getApplicationContext(), uri);
-        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                System.out.println("done playing");
-                // TODO do something
-            }
-        });
-        player.start();
+        RandomPlayButton btn = (RandomPlayButton) findViewById(R.id.random_play_button);
+        btn.setResourceUrl(url);
+        btn.performClick();
     }
 }
