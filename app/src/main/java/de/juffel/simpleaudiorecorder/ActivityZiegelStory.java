@@ -28,7 +28,7 @@ public class ActivityZiegelStory extends ActivityZiegel {
 
     private void getRandomStory(final Integer url_index) {
         if (url_index < ActivityZiegel.SERVER_URLS.length) {
-            String url = ActivityZiegel.SERVER_URLS[url_index];
+            String url = ActivityZiegel.SERVER_URLS[url_index] + "/random";
             System.out.println("requesting random story from " + url);
 
             // send request
@@ -38,7 +38,7 @@ public class ActivityZiegelStory extends ActivityZiegel {
                 public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
                     System.out.println("response received with status code " + statusCode);
                     // TODO trigger exit animation
-                    processResponse(bytes);
+                    processResponse(bytes, ActivityZiegel.SERVER_URLS[url_index]);
                 }
 
                 @Override
@@ -57,16 +57,19 @@ public class ActivityZiegelStory extends ActivityZiegel {
      * Parses response URL from bytes parameter and triggers replay of this story
      * @param bytes
      */
-    private void processResponse(byte[] bytes) {
-        Uri url = null;
+    private void processResponse(byte[] bytes, String server) {
+        // parse server "XML" response
+        String url = server;
         try {
-            url = Uri.parse(new String(bytes, "UTF-8"));
+            url += new String(bytes, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        System.out.println("starting to play story " + url);
-        MediaPlayer player = MediaPlayer.create(getApplicationContext(), url);
+        Uri uri = Uri.parse(url);
+
+        System.out.println("starting to play story from url " + url);
+        MediaPlayer player = MediaPlayer.create(getApplicationContext(), uri);
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
