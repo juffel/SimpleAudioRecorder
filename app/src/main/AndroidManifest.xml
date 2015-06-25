@@ -45,7 +45,7 @@
 
         <activity
             android:name=".ActivityZiegelStory"
-            android:label="@string/title_activity_activity_ziegel_story" >
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
