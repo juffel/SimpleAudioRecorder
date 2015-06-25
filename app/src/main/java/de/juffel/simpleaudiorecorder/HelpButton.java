@@ -28,6 +28,7 @@ public class HelpButton extends BasicButton {
                 Runnable startNext = new Runnable() {
                     @Override
                     public void run() {
+                        intent.putExtra("from_home", true);
                         context.startActivity(intent);
                         ((AnimationDrawable)HelpButton.super.getBackground()).stop();
                         HelpButton.super.setBackground(null);
