@@ -19,6 +19,7 @@ public class ActivityZiegelStory extends ActivityZiegel {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story);
+        playRandomStory();
     }
 
     private void playRandomStory() {
