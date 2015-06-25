@@ -34,40 +34,7 @@ public class UploadButton extends BasicButton {
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                // startUpload();
-                String url = ActivityZiegel.SERVER_URL;
-
-                triggerIdleAnimation();
-
-                // src: http://loopj.com/android-async-http/ @ Uploading Files with RequestParams
-                // gather parameters and upload file
-                File file = new File(file_path);
-                RequestParams params = new RequestParams();
-                try {
-                    params.put("file", file);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                Context context = getContext();
-
-                // send request
-                AsyncHttpClient client = new AsyncHttpClient();
-                client.post(url, params, new AsyncHttpResponseHandler() {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
-                        System.out.println("response received with status code " + statusCode);
-                        UploadButton.super.triggerExitAnimation();
-
-                        processResponse(bytes);
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] bytes, Throwable throwable) {
-                        System.out.println("response received with status code " + statusCode);
-                        UploadButton.super.triggerEntryAnimation();
-                    }
-                });
+                startUpload();
             }
         });
 
@@ -75,10 +42,30 @@ public class UploadButton extends BasicButton {
     }
 
     /**
-     * Uploads the current recording to the server using the AsyncHttpClient Library
+     * Handles the upload process to the possibly multiple urls until some upload succeeds.
      */
     private void startUpload() {
-        String url = ActivityZiegel.SERVER_URL;
+        upload(0);
+    }
+
+    private void upload(Integer url_index) {
+        if (url_index < ActivityZiegel.SERVER_URLS.length) {
+            uploadTo(url_index);
+        } else {
+            // all URLs were tried unsucessfully
+            System.out.println("the file upload was unsuccessful to all of these URLs" + ActivityZiegel.SERVER_URLS);
+            UploadButton.super.triggerEntryAnimation();
+        }
+    }
+
+    /**
+     * Uploads the current recording to the server using the AsyncHttpClient Library
+     */
+    private void uploadTo(final Integer url_index) {
+        String url = ActivityZiegel.SERVER_URLS[url_index];
+        System.out.println("uploading file " + file_path + " to " + url);
+
+        triggerIdleAnimation();
 
         // src: http://loopj.com/android-async-http/ @ Uploading Files with RequestParams
         // gather parameters and upload file
@@ -86,11 +73,11 @@ public class UploadButton extends BasicButton {
         RequestParams params = new RequestParams();
         try {
             params.put("file", file);
-        } catch(FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        final Context context = getContext();
+        Context context = getContext();
 
         // send request
         AsyncHttpClient client = new AsyncHttpClient();
@@ -100,27 +87,14 @@ public class UploadButton extends BasicButton {
                 System.out.println("response received with status code " + statusCode);
                 UploadButton.super.triggerExitAnimation();
 
-                // processResponse(bytes);
-
-                String token = null;
-                try {
-                    token = new String(bytes, "UTF-8");
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-
-                final Intent intent = new Intent(context, ActivityZiegelBye.class);
-                intent.putExtra("token", token);
-
-                context.startActivity(intent);
+                processResponse(bytes);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] bytes, Throwable throwable) {
                 System.out.println("response received with status code " + statusCode);
-                UploadButton.super.triggerEntryAnimation();
-
-                // mabe error handling
+                // retry with next url
+                upload(url_index+1);
             }
         });
     }
