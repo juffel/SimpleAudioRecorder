@@ -8,14 +8,14 @@
 
     <de.juffel.simpleaudiorecorder.TokenButton
         android:id="@+id/token0"
-        android:layout_width="wrap_content"
+        android:layout_width="560px"
         android:layout_height="264px"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0px" />
 
     <de.juffel.simpleaudiorecorder.TokenButton
         android:id="@+id/token1"
-        android:layout_width="wrap_content"
+        android:layout_width="560px"
         android:layout_height="264px"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/token0"
@@ -23,7 +23,7 @@
 
     <de.juffel.simpleaudiorecorder.TokenButton
         android:id="@+id/token2"
-        android:layout_width="wrap_content"
+        android:layout_width="560px"
         android:layout_height="264px"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/token1"

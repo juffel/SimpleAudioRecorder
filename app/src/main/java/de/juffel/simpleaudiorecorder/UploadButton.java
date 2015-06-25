@@ -62,7 +62,7 @@ public class UploadButton extends BasicButton {
      * Uploads the current recording to the server using the AsyncHttpClient Library
      */
     private void uploadTo(final Integer url_index) {
-        String url = ActivityZiegel.SERVER_URLS[url_index];
+        String url = ActivityZiegel.SERVER_URLS[url_index] + "/audio/put_here";
         System.out.println("uploading file " + file_path + " to " + url);
 
         triggerIdleAnimation();

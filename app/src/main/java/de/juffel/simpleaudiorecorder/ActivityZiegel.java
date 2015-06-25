@@ -11,12 +11,14 @@ public class ActivityZiegel extends Activity {
     // a list of servers a recording will tried to be uploaded to in order of appereance,
     // stops after first sucessful upload
     static final String[] SERVER_URLS = {
+            // mischk
+            "http://192.168.178.45:3000",
             // julian home
-            "http://varuna.fritz.box:3000/audio/put_here",
+            "http://varuna.fritz.box:3000",
             // julian eduroam
-            "http://172.16.240.10:3000/audio/put_here",
+            "http://172.16.240.10:3000",
             // kai uberspace
-            "http://kaesim.cepheus.uberspace.de:63190/audio/put_here"};
+            "http://kaesim.cepheus.uberspace.de:63190"};
 
     @Override
     public void onBackPressed() {
