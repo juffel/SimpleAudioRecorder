@@ -13,13 +13,15 @@ import org.apache.http.Header;
 
 public class ActivityZiegelBye extends ActivityZiegel {
 
+    private String token;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bye);
 
         Intent intent = getIntent();
-        final String token = intent.getStringExtra("token");
+        this.token = intent.getStringExtra("token");
         System.out.println(token);
 
         Integer t0 = Integer.parseInt(token.substring(0, 1));
@@ -34,32 +36,41 @@ public class ActivityZiegelBye extends ActivityZiegel {
         b1.setNumber(t1);
         b2.setNumber(t2);
 
-        // poll the server every 15 seconds to check wether user has already entered story information
-        final Handler handler = new Handler();
-        final Long delay = new Long(5000);
-        final Runnable run = new Runnable() {
-            @Override
-            public void run() {
-                // send request
-                AsyncHttpClient client = new AsyncHttpClient();
-                String url = ActivityZiegel.SERVER_URLS[0] + "/token_entered?token=" + token;
-                final Runnable tmp_run = this;
-                client.get(url, new AsyncHttpResponseHandler() {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                        // return to initial activity and lock screen
-                        System.out.println("App lifecycle ended.");
-                    }
+        checkServer(new Long(15000));
+    }
 
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        System.out.println("Server request: no changes were made to story metadata on server yet. Try again later.");
-                        handler.postDelayed(tmp_run, delay);
-                    }
-                });
+    /**
+     * Periodically checks on server wether Data was entered for the story using this token.
+     * If no data was entered, try again in delay milliseconds, otherwise start sleep Activity
+     */
+    public void checkServer(final Long delay) {
+        AsyncHttpClient client = new AsyncHttpClient();
+        String url = ActivityZiegel.SERVER_URLS[0] + "/token_entered?token=" + token;
+        client.get(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                // return to initial activity and lock screen
+                System.out.println("App lifecycle ended.");
+
+                Intent intent = new Intent(ActivityZiegelBye.this, ActivitySleep.class);
+                ActivityZiegelBye.this.startActivity(intent);
             }
-        };
-        handler.postDelayed(run, delay);
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                System.out.println("Server request: no changes were made to story metadata on server yet. Try again later.");
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        checkServer(delay);
+                    }
+                }, delay);
+            }
+        });
+    }
+
+    public void endBye() {
 
     }
 
