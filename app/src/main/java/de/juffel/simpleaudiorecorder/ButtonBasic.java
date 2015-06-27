@@ -23,6 +23,9 @@ public class ButtonBasic extends Button {
         this.exitAnimation = exitAnimation;
     }
 
+    /**
+     * Returns the amount of milliseconds an AnimationDrawable endures.
+     */
     private int getAnimationTime(AnimationDrawable anim) {
         // Hacky solution for waiting for an animationDrawable to end
         int time = 0;
