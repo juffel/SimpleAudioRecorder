@@ -5,5 +5,5 @@
     android:layout_gravity="center_horizontal"
     android:background="@color/background"
     tools:context="de.juffel.simpleaudiorecorder.ActivitySleep" >
-    
+
 </RelativeLayout>
