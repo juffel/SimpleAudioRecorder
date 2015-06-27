@@ -14,15 +14,14 @@ import android.view.View;
 public class ButtonExplain extends ButtonBasic {
 
     private MediaPlayer player;
+    private Boolean playing = false;
     private static final String filename = "erklaerbaer";
 
     public ButtonExplain(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        // set exclamation mark animations, exit animation is null for now
         setAnimations(R.drawable.question, R.drawable.playing, R.drawable.play);
-        // if we return to this button make clickable again
-        setClickable(true);
+
         // create MediaPlayer from "raw" resource audio file
         player = MediaPlayer.create(context, R.raw.explanation);
         // when the player finishes playing, switch to Home Activity
@@ -55,12 +54,20 @@ public class ButtonExplain extends ButtonBasic {
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                // play idle animation while explation is playing
-                ButtonExplain.super.triggerIdleAnimation();
-                // play explanation with Mediaplayer
-                player.start();
-                // prevent multiclick
-                ButtonExplain.super.setClickable(false);
+                if (playing) {
+                    playing = false;
+                    player.reset(); // on completion listener will not be triggered
+                    Intent intent = new Intent(context, ActivityZiegelHome.class);
+                    context.startActivity(intent);
+                    ((AnimationDrawable) ButtonExplain.super.getBackground()).stop();
+                    ButtonExplain.super.setBackground(null);
+                } else {
+                    playing = true;
+                    // play idle animation while explation is playing
+                    ButtonExplain.super.triggerIdleAnimation();
+                    // play explanation with Mediaplayer
+                    player.start();
+                }
             }
         });
 
