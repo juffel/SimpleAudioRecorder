@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_gravity="center_horizontal"
     android:background="@color/background"
-    tools:context="de.juffel.simpleaudiorecorder.ActivityZiegelBye">
+    tools:context="de.juffel.simpleaudiorecorder.ActivityZiegelBye"
+    android:keepScreenOn="true" >
 
     <de.juffel.simpleaudiorecorder.ButtonToken
         android:id="@+id/token0"

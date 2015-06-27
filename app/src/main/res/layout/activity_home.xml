@@ -2,7 +2,8 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:layout_gravity="center_horizontal"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:keepScreenOn="true" >
 
     <de.juffel.simpleaudiorecorder.ButtonHelp
         android:id="@+id/help_button"
