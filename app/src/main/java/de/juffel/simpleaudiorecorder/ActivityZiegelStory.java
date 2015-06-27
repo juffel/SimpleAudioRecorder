@@ -57,6 +57,13 @@ public class ActivityZiegelStory extends ActivityZiegel {
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        RandomPlayButton btn = (RandomPlayButton) findViewById(R.id.random_play_button);
+        btn.stopPlay();
+    }
+
     /**
      * Parses response URL from bytes parameter and triggers replay of this story
      * @param bytes

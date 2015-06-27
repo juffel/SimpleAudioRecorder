@@ -49,7 +49,7 @@ public class RandomPlayButton extends BasicButton {
         this.url = url;
     }
 
-    private void startPlay() {
+    public void startPlay() {
         System.out.println("starting to play story from url " + url.toString());
         // MediaPlayer player = MediaPlayer.create(getContext(), uri);
         MediaPlayer player = new MediaPlayer();
@@ -70,7 +70,7 @@ public class RandomPlayButton extends BasicButton {
         player.start();
     }
 
-    private void stopPlay() {
+    public void stopPlay() {
         if (player != null) {
             player.release();
             player = null; // dunno why this is necessary but it appears in the tut, so i adopt it
