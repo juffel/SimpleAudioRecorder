@@ -22,6 +22,9 @@ import java.io.UnsupportedEncodingException;
 public class ButtonUpload extends ButtonBasic {
 
     private static String file_path;
+    private Boolean upload_done = false;
+    private Boolean upload_animation_done = false;
+    private String token;
 
     public ButtonUpload(final Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -54,7 +57,7 @@ public class ButtonUpload extends ButtonBasic {
         } else {
             // all URLs were tried unsucessfully
             System.out.println("the file upload was unsuccessful to all of these URLs" + ActivityZiegel.SERVER_URLS);
-            ButtonUpload.super.triggerEntryAnimation();
+            Integer duration = ButtonUpload.super.triggerEntryAnimation();
         }
     }
 
@@ -65,7 +68,19 @@ public class ButtonUpload extends ButtonBasic {
         String url = ActivityZiegel.SERVER_URLS[url_index] + "/audio/put_here";
         System.out.println("uploading file " + file_path + " to " + url);
 
-        triggerIdleAnimation();
+        Integer duration = triggerIdleAnimation();
+        // the animation must play at least two cycles before ActivityToken is opened, to achieve this:
+        // schedule task: after two cycles of the animation check, wether upload has already succeeded
+        //    - if it has, then call switchActivity()
+        //    - otherwise switchActivity() is called after the Upload has finished successfully
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                upload_animation_done = true;
+                switchActivity();
+            }
+        }, duration * 3);
 
         // src: http://loopj.com/android-async-http/ @ Uploading Files with RequestParams
         // gather parameters and upload file
@@ -85,8 +100,7 @@ public class ButtonUpload extends ButtonBasic {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
                 System.out.println("response received with status code " + statusCode);
-                ButtonUpload.super.triggerExitAnimation();
-
+                upload_done = true;
                 processResponse(bytes);
             }
 
@@ -110,23 +124,22 @@ public class ButtonUpload extends ButtonBasic {
             e.printStackTrace();
         }
 
-        final Intent intent = new Intent(getContext(), ActivityZiegelBye.class);
-        intent.putExtra("token", token);
-
-        // we start the next Activity from a separate thread, so that we can properly wait for
-        // the Animation to end first.
-        Runnable startNext = new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Started to run");
-                ButtonUpload.super.getContext().startActivity(intent);
-            }
-        };
-        Handler delayHandler = new Handler();
-        // play exit animation
-        int waitTime = ButtonUpload.super.triggerExitAnimation();
-        delayHandler.postDelayed(startNext, waitTime);
-
+        this.token = token;
+        switchActivity();
     }
 
+    /**
+     * Switches to ActivityToken, includes a check, wether the upload has finished yet, if it has not
+     * it does not do anything and has to be called after upload finishes.
+     */
+    private void switchActivity() {
+        if (upload_done && upload_animation_done) {
+            triggerExitAnimation();
+
+            final Intent intent = new Intent(getContext(), ActivityZiegelBye.class);
+            intent.putExtra("token", token);
+
+            getContext().startActivity(intent);
+        }
+    }
 }
