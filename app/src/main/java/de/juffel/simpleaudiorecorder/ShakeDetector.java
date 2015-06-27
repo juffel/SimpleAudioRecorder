@@ -14,7 +14,7 @@ import android.util.FloatMath;
 public class ShakeDetector implements SensorEventListener {
 
     // TODO check this with actual phone and app G-force
-    private static final float SHAKE_GRAVITY_THRESHHOLD = 2.7F;
+    private static final float SHAKE_GRAVITY_THRESHHOLD = 1.7F;
     // time before next shake event is permitted
     private static long SHAKE_DELAY_TIME = 500;
 
