@@ -8,7 +8,7 @@ public class ActivityZiegelExplain extends ActivityZiegel {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hello);
+        setContentView(R.layout.activity_explain);
     }
 
     @Override
