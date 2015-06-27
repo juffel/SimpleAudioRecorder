@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class ActivityZiegelHello extends ActivityZiegel {
+public class ActivityZiegelExplain extends ActivityZiegel {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

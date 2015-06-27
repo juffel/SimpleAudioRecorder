@@ -13,7 +13,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 
 
-public class ActivityZiegelStory extends ActivityZiegel {
+public class ActivityZiegelRandomStory extends ActivityZiegel {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

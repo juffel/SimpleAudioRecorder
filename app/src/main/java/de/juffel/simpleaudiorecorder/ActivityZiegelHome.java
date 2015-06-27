@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
 public class ActivityZiegelHome extends ActivityZiegel {
@@ -27,7 +25,7 @@ public class ActivityZiegelHome extends ActivityZiegel {
             @Override
             public void onShake() {
                 Context context = ActivityZiegelHome.this;
-                final Intent intent = new Intent(context, ActivityZiegelStory.class);
+                final Intent intent = new Intent(context, ActivityZiegelRandomStory.class);
 
                 context.startActivity(intent);
             }
