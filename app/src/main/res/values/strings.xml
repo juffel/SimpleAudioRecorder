@@ -17,5 +17,6 @@
     <string name="title_activity_bye">ByeActivity</string>
     <string name="title_activity_activity_ziegel_story">ActivityZiegelStory</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_activity_sleep">ActivitySleep</string>
 
 </resources>

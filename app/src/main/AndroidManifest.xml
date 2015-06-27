@@ -46,9 +46,12 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
         <activity
             android:name=".ActivityZiegelRandomStory"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ActivitySleep"
             android:screenOrientation="portrait" >
         </activity>
     </application>
