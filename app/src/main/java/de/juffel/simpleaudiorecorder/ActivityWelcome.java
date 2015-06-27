@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import java.util.concurrent.TimeUnit;
 
 
-public class ActivityWelcome extends Activity {
+public class ActivityWelcome extends ActivityZiegel {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
