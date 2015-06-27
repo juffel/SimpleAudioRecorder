@@ -10,14 +10,14 @@ import java.io.IOException;
 /**
  * Created by kai on 6/16/15.
  */
-public class PlayButton extends BasicButton {
+public class ButtonPlay extends ButtonBasic {
 
     private static String file_path;
 
     private MediaPlayer player;
     private Boolean playing;
 
-    public PlayButton(final Context context, AttributeSet attrs) {
+    public ButtonPlay(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         playing = false;
@@ -56,7 +56,7 @@ public class PlayButton extends BasicButton {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 // trigger click on completion, so the button returns to it's initial state
-                PlayButton.super.performClick();
+                ButtonPlay.super.performClick();
             }
         });
         try {

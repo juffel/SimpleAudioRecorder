@@ -11,12 +11,12 @@ import android.view.View;
 /**
  * Created by Julian on 15/06/15.
  */
-public class ExplainButton extends BasicButton {
+public class ButtonExplain extends ButtonBasic {
 
     private MediaPlayer player;
     private static final String filename = "erklaerbaer";
 
-    public ExplainButton(final Context context, AttributeSet attrs) {
+    public ButtonExplain(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         // set exclamation mark animations, exit animation is null for now
@@ -39,13 +39,13 @@ public class ExplainButton extends BasicButton {
                     @Override
                     public void run() {
                         context.startActivity(intent);
-                        ((AnimationDrawable)ExplainButton.super.getBackground()).stop();
-                        ExplainButton.super.setBackground(null);
+                        ((AnimationDrawable) ButtonExplain.super.getBackground()).stop();
+                        ButtonExplain.super.setBackground(null);
                     }
                 };
                 Handler delayHandler = new Handler();
                 // play exit animation
-                int waitTime = ExplainButton.super.triggerExitAnimation();
+                int waitTime = ButtonExplain.super.triggerExitAnimation();
                 delayHandler.postDelayed(startNext, waitTime);
 
             }
@@ -56,11 +56,11 @@ public class ExplainButton extends BasicButton {
             @Override
             public void onClick(View v) {
                 // play idle animation while explation is playing
-                ExplainButton.super.triggerIdleAnimation();
+                ButtonExplain.super.triggerIdleAnimation();
                 // play explanation with Mediaplayer
                 player.start();
                 // prevent multiclick
-                ExplainButton.super.setClickable(false);
+                ButtonExplain.super.setClickable(false);
             }
         });
 

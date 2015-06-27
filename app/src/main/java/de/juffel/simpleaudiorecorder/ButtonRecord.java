@@ -13,14 +13,14 @@ import java.io.IOException;
 /**
  * Created by kai on 6/16/15.
  */
-public class RecordButton extends BasicButton {
+public class ButtonRecord extends ButtonBasic {
 
     private static String file_path;
 
     private MediaRecorder recorder;
     private Boolean recording;
 
-    public RecordButton(final Context context, AttributeSet attrs) {
+    public ButtonRecord(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         recording = false;
@@ -50,13 +50,13 @@ public class RecordButton extends BasicButton {
                         @Override
                         public void run() {
                             context.startActivity(intent);
-                            ((AnimationDrawable) RecordButton.super.getBackground()).stop();
-                            RecordButton.super.setBackground(null);
+                            ((AnimationDrawable) ButtonRecord.super.getBackground()).stop();
+                            ButtonRecord.super.setBackground(null);
                         }
                     };
                     Handler delayHandler = new Handler();
                     // play exit animation
-                    int waitTime = RecordButton.super.triggerExitAnimation();
+                    int waitTime = ButtonRecord.super.triggerExitAnimation();
                     delayHandler.postDelayed(startNext, waitTime);
                 }
 

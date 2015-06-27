@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 /**
  * Created by Julian on 27/06/15.
  */
-public class ButtonWelcome extends BasicButton {
+public class ButtonWelcome extends ButtonBasic {
     public ButtonWelcome(Context context, AttributeSet attrs) {
         super(context, attrs);
 

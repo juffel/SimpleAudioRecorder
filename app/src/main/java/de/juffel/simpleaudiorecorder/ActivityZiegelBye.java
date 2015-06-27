@@ -20,9 +20,9 @@ public class ActivityZiegelBye extends ActivityZiegel {
         Integer t1 = Integer.parseInt(token.substring(1,2));
         Integer t2 = Integer.parseInt(token.substring(2,3));
 
-        TokenButton b0 = (TokenButton) findViewById(R.id.token0);
-        TokenButton b1 = (TokenButton) findViewById(R.id.token1);
-        TokenButton b2 = (TokenButton) findViewById(R.id.token2);
+        ButtonToken b0 = (ButtonToken) findViewById(R.id.token0);
+        ButtonToken b1 = (ButtonToken) findViewById(R.id.token1);
+        ButtonToken b2 = (ButtonToken) findViewById(R.id.token2);
 
         b0.setNumber(t0);
         b1.setNumber(t1);

@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class WelcomeActivity extends Activity {
+public class ActivityWelcome extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class WelcomeActivity extends Activity {
     protected void onResume() {
         super.onResume();
         // play welcome/startanimation (this button is not really used as a button, but only to display an animation)
-        BasicButton btn = (BasicButton) findViewById(R.id.button_welcome);
+        ButtonBasic btn = (ButtonBasic) findViewById(R.id.button_welcome);
         btn.triggerEntryAnimation();
     }
 

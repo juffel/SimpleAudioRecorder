@@ -9,9 +9,9 @@ import android.view.View;
 /**
  * Created by kai on 6/16/15.
  */
-public class ReturnButton extends BasicButton {
+public class ButtonBackToExplain extends ButtonBasic {
 
-    public ReturnButton(final Context context, AttributeSet attrs) {
+    public ButtonBackToExplain(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         setAnimations(R.drawable.back, R.drawable.back, R.drawable.back);
@@ -32,7 +32,7 @@ public class ReturnButton extends BasicButton {
                 };
                 Handler delayHandler = new Handler();
                 // play exit animation
-                int waitTime = ReturnButton.super.triggerExitAnimation();
+                int waitTime = ButtonBackToExplain.super.triggerExitAnimation();
                 delayHandler.postDelayed(startNext, waitTime);
 
             }

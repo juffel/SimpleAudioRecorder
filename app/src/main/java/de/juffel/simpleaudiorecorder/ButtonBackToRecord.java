@@ -10,9 +10,9 @@ import android.view.View;
 /**
  * Created by Julian on 22/06/15.
  */
-public class BackToRecordButton extends BasicButton {
+public class ButtonBackToRecord extends ButtonBasic {
 
-    public BackToRecordButton(final Context context, AttributeSet attrs) {
+    public ButtonBackToRecord(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         setAnimations(R.drawable.back, null, null);
@@ -28,13 +28,13 @@ public class BackToRecordButton extends BasicButton {
                     @Override
                     public void run() {
                         context.startActivity(intent);
-                        ((AnimationDrawable) BackToRecordButton.super.getBackground()).stop();
-                        BackToRecordButton.super.setBackground(null);
+                        ((AnimationDrawable) ButtonBackToRecord.super.getBackground()).stop();
+                        ButtonBackToRecord.super.setBackground(null);
                     }
                 };
                 Handler delayHandler = new Handler();
                 // play exit animation
-                int waitTime = BackToRecordButton.super.triggerExitAnimation();
+                int waitTime = ButtonBackToRecord.super.triggerExitAnimation();
                 delayHandler.postDelayed(startNext, waitTime);
             }
         });

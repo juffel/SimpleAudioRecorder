@@ -1,7 +1,5 @@
 package de.juffel.simpleaudiorecorder;
 
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -10,7 +8,6 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import org.apache.http.Header;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 
 
 public class ActivityZiegelRandomStory extends ActivityZiegel {
@@ -66,7 +63,7 @@ public class ActivityZiegelRandomStory extends ActivityZiegel {
     protected void onPause() {
         super.onPause();
         // stop replay when activity is left
-        RandomPlayButton btn = (RandomPlayButton) findViewById(R.id.random_play_button);
+        ButtonRandomPlay btn = (ButtonRandomPlay) findViewById(R.id.random_play_button);
         btn.stopPlay();
     }
 
@@ -74,7 +71,7 @@ public class ActivityZiegelRandomStory extends ActivityZiegel {
     protected void onStop() {
         super.onStop();
         // stop replay when activity is left
-        RandomPlayButton btn = (RandomPlayButton) findViewById(R.id.random_play_button);
+        ButtonRandomPlay btn = (ButtonRandomPlay) findViewById(R.id.random_play_button);
         btn.stopPlay();
     }
     /**
@@ -90,7 +87,7 @@ public class ActivityZiegelRandomStory extends ActivityZiegel {
             e.printStackTrace();
         }
 
-        RandomPlayButton btn = (RandomPlayButton) findViewById(R.id.random_play_button);
+        ButtonRandomPlay btn = (ButtonRandomPlay) findViewById(R.id.random_play_button);
         btn.setResourceUrl(url);
         btn.performClick();
     }

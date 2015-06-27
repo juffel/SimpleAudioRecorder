@@ -19,11 +19,11 @@ import java.io.UnsupportedEncodingException;
 /**
  * Created by kai on 6/16/15.
  */
-public class UploadButton extends BasicButton {
+public class ButtonUpload extends ButtonBasic {
 
     private static String file_path;
 
-    public UploadButton(final Context context, AttributeSet attrs) {
+    public ButtonUpload(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         setAnimations(R.drawable.send, R.drawable.send_animated, R.drawable.send);
@@ -54,7 +54,7 @@ public class UploadButton extends BasicButton {
         } else {
             // all URLs were tried unsucessfully
             System.out.println("the file upload was unsuccessful to all of these URLs" + ActivityZiegel.SERVER_URLS);
-            UploadButton.super.triggerEntryAnimation();
+            ButtonUpload.super.triggerEntryAnimation();
         }
     }
 
@@ -85,7 +85,7 @@ public class UploadButton extends BasicButton {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
                 System.out.println("response received with status code " + statusCode);
-                UploadButton.super.triggerExitAnimation();
+                ButtonUpload.super.triggerExitAnimation();
 
                 processResponse(bytes);
             }
@@ -119,12 +119,12 @@ public class UploadButton extends BasicButton {
             @Override
             public void run() {
                 System.out.println("Started to run");
-                UploadButton.super.getContext().startActivity(intent);
+                ButtonUpload.super.getContext().startActivity(intent);
             }
         };
         Handler delayHandler = new Handler();
         // play exit animation
-        int waitTime = UploadButton.super.triggerExitAnimation();
+        int waitTime = ButtonUpload.super.triggerExitAnimation();
         delayHandler.postDelayed(startNext, waitTime);
 
     }

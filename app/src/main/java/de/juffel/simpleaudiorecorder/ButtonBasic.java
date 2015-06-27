@@ -10,10 +10,10 @@ import android.widget.Button;
  * idle and one exit Animation.
  * Created by Julian on 15/06/15.
  */
-public class BasicButton extends Button {
+public class ButtonBasic extends Button {
     private Integer entryAnimation, idleAnimation, exitAnimation;
 
-    public BasicButton(Context context, AttributeSet attrs) {
+    public ButtonBasic(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

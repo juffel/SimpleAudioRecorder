@@ -10,9 +10,9 @@ import android.view.View;
 /**
  * Created by kai on 6/16/15.
  */
-public class HelpButton extends BasicButton {
+public class ButtonHelp extends ButtonBasic {
 
-    public HelpButton(final Context context, AttributeSet attrs) {
+    public ButtonHelp(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         setAnimations(R.drawable.question, R.drawable.question, R.drawable.question);
@@ -30,13 +30,13 @@ public class HelpButton extends BasicButton {
                     public void run() {
                         intent.putExtra("from_home", true);
                         context.startActivity(intent);
-                        ((AnimationDrawable)HelpButton.super.getBackground()).stop();
-                        HelpButton.super.setBackground(null);
+                        ((AnimationDrawable) ButtonHelp.super.getBackground()).stop();
+                        ButtonHelp.super.setBackground(null);
                     }
                 };
                 Handler delayHandler = new Handler();
                 // play exit animation
-                int waitTime = HelpButton.super.triggerExitAnimation();
+                int waitTime = ButtonHelp.super.triggerExitAnimation();
                 delayHandler.postDelayed(startNext, waitTime);
 
             }

@@ -6,9 +6,9 @@ import android.util.AttributeSet;
 /**
  * Created by Julian on 23/06/15.
  */
-public class TokenButton extends BasicButton {
+public class ButtonToken extends ButtonBasic {
 
-    public TokenButton(Context context, AttributeSet attrs) {
+    public ButtonToken(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

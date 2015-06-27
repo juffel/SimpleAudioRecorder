@@ -5,7 +5,7 @@
     android:background="@color/background" >
 
 
-    <de.juffel.simpleaudiorecorder.RecordButton
+    <de.juffel.simpleaudiorecorder.ButtonRecord
         android:id="@+id/record_button"
         android:layout_width="560px"
         android:layout_height="264px"

@@ -4,7 +4,7 @@
     android:layout_gravity="center_horizontal"
     android:background="@color/background" >
 
-    <de.juffel.simpleaudiorecorder.ExplainButton
+    <de.juffel.simpleaudiorecorder.ButtonExplain
         android:id="@+id/explain_button"
         android:layout_width="560px"
         android:layout_height="264px"

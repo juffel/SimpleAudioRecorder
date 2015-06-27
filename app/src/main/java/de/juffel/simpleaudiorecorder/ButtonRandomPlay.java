@@ -2,7 +2,6 @@ package de.juffel.simpleaudiorecorder;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -11,14 +10,14 @@ import java.io.IOException;
 /**
  * Created by kai on 6/16/15.
  */
-public class RandomPlayButton extends BasicButton {
+public class ButtonRandomPlay extends ButtonBasic {
 
     private String url;
 
     private MediaPlayer player;
     private Boolean playing;
 
-    public RandomPlayButton(final Context context, AttributeSet attrs) {
+    public ButtonRandomPlay(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         playing = false;
@@ -61,7 +60,7 @@ public class RandomPlayButton extends BasicButton {
             public void onCompletion(MediaPlayer mp) {
                 System.out.println("done playing");
                 // trigger click on stop, to reenter idle state
-                RandomPlayButton.super.performClick();
+                ButtonRandomPlay.super.performClick();
             }
         });
         player.start();
