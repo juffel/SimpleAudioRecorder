@@ -21,6 +21,8 @@ public class ActivityZiegelStory extends ActivityZiegel {
         setContentView(R.layout.activity_story);
     }
 
+    // trigger replay of random story onResume, this method is called after the activity has become visible
+    @Override
     protected void onResume() {
         super.onResume();
         playRandomStory();
@@ -30,6 +32,9 @@ public class ActivityZiegelStory extends ActivityZiegel {
         getRandomStory(0);
     }
 
+    /**
+     * Tries to get a random story from server with address ActivityZiegel.SERVER_URLS[url_index]
+     */
     private void getRandomStory(final Integer url_index) {
         if (url_index < ActivityZiegel.SERVER_URLS.length) {
             String url = ActivityZiegel.SERVER_URLS[url_index] + "/random";

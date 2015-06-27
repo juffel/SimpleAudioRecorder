@@ -22,23 +22,19 @@ public class RandomPlayButton extends BasicButton {
         super(context, attrs);
 
         playing = false;
-
         setAnimations(R.drawable.play, R.drawable.playing, R.drawable.play);
 
-        // install clickhandler, change Activity
+        // install clickhandler
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (playing) {
-                    playing = false;
-                    stopPlay();
                     triggerEntryAnimation();
+                    stopPlay();
                 } else {
-                    playing = true;
-                    startPlay();
                     triggerIdleAnimation();
+                    startPlay();
                 }
-
             }
 
         });
@@ -50,9 +46,10 @@ public class RandomPlayButton extends BasicButton {
     }
 
     public void startPlay() {
+        playing = true;
         System.out.println("starting to play story from url " + url.toString());
         // MediaPlayer player = MediaPlayer.create(getContext(), uri);
-        MediaPlayer player = new MediaPlayer();
+        player = new MediaPlayer();
         try {
             player.setDataSource(this.url);
             player.prepare();
@@ -63,7 +60,7 @@ public class RandomPlayButton extends BasicButton {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 System.out.println("done playing");
-                // TODO do something
+                // trigger click on stop, to reenter idle state
                 RandomPlayButton.super.performClick();
             }
         });
@@ -71,6 +68,7 @@ public class RandomPlayButton extends BasicButton {
     }
 
     public void stopPlay() {
+        playing = false;
         if (player != null) {
             player.release();
             player = null; // dunno why this is necessary but it appears in the tut, so i adopt it
