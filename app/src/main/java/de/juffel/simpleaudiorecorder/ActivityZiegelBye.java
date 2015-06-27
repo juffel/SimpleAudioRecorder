@@ -36,7 +36,7 @@ public class ActivityZiegelBye extends ActivityZiegel {
         b1.setNumber(t1);
         b2.setNumber(t2);
 
-        checkServer(new Long(15000));
+        checkServer(new Long(5000));
     }
 
     /**
