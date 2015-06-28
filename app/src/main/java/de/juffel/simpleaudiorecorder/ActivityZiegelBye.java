@@ -45,7 +45,7 @@ public class ActivityZiegelBye extends ActivityZiegel {
      */
     public void checkServer(final Long delay) {
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = ActivityZiegel.SERVER_URLS[0] + "/token_entered?token=" + token;
+        String url = ActivityZiegel.SERVER_URL + "/token_entered?token=" + token;
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

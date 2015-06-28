@@ -45,27 +45,10 @@ public class ButtonUpload extends ButtonBasic {
     }
 
     /**
-     * Handles the upload process to the possibly multiple urls until some upload succeeds.
-     */
-    private void startUpload() {
-        upload(0);
-    }
-
-    private void upload(Integer url_index) {
-        if (url_index < ActivityZiegel.SERVER_URLS.length) {
-            uploadTo(url_index);
-        } else {
-            // all URLs were tried unsucessfully
-            System.out.println("the file upload was unsuccessful to all of these URLs" + ActivityZiegel.SERVER_URLS);
-            Integer duration = ButtonUpload.super.triggerEntryAnimation();
-        }
-    }
-
-    /**
      * Uploads the current recording to the server using the AsyncHttpClient Library
      */
-    private void uploadTo(final Integer url_index) {
-        String url = ActivityZiegel.SERVER_URLS[url_index] + "/audio/put_here";
+    private void startUpload() {
+        String url = ActivityZiegel.SERVER_URL + "/audio/put_here";
         System.out.println("uploading file " + file_path + " to " + url);
 
         Integer duration = triggerIdleAnimation();
@@ -107,8 +90,6 @@ public class ButtonUpload extends ButtonBasic {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] bytes, Throwable throwable) {
                 System.out.println("response received with status code " + statusCode);
-                // retry with next url
-                upload(url_index+1);
             }
         });
     }

@@ -25,16 +25,11 @@ public class ActivityZiegelRandomStory extends ActivityZiegel {
         playRandomStory();
     }
 
-    private void playRandomStory() {
-        getRandomStory(0);
-    }
-
     /**
      * Tries to get a random story from server with address ActivityZiegel.SERVER_URLS[url_index]
      */
-    private void getRandomStory(final Integer url_index) {
-        if (url_index < ActivityZiegel.SERVER_URLS.length) {
-            String url = ActivityZiegel.SERVER_URLS[url_index] + "/random";
+    private void playRandomStory() {
+            String url = ActivityZiegel.SERVER_URL + "/random";
             System.out.println("requesting random story from " + url);
 
             // send request
@@ -44,19 +39,14 @@ public class ActivityZiegelRandomStory extends ActivityZiegel {
                 public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
                     System.out.println("response received with status code " + statusCode);
                     // TODO trigger exit animation
-                    processResponse(bytes, ActivityZiegel.SERVER_URLS[url_index]);
+                    processResponse(bytes);
                 }
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] bytes, Throwable throwable) {
                     System.out.println("response received with status code " + statusCode);
-                    // retry with next url
-                    getRandomStory(url_index + 1);
                 }
             });
-        } else {
-            // not any successful server request
-        }
     }
 
     @Override
@@ -78,9 +68,9 @@ public class ActivityZiegelRandomStory extends ActivityZiegel {
      * Parses response URL from bytes parameter and triggers replay of this story
      * @param bytes
      */
-    private void processResponse(byte[] bytes, String server) {
+    private void processResponse(byte[] bytes) {
         // parse server "XML" response
-        String url = server;
+        String url = ActivityZiegel.SERVER_URL;
         try {
             url += new String(bytes, "UTF-8");
         } catch (UnsupportedEncodingException e) {
