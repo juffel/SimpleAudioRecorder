@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 
 public class ActivityWelcome extends ActivityZiegel {
@@ -12,6 +13,14 @@ public class ActivityWelcome extends ActivityZiegel {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+        // TODO turn on radio / turn off airplane mode if radio is off
+        Context context = getApplicationContext();
+        Log.i(TAG, "checking FlightMode status");
+        if (!isFlightModeEnabled(context)) {
+            Log.i(TAG, "trigger setFlightMode off");
+            setFlightMode(getApplicationContext());
+        }
     }
 
     @Override
