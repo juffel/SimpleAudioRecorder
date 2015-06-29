@@ -20,7 +20,7 @@ public class ButtonBackToRecord extends ButtonBasic {
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent intent = new Intent(context, ActivityZiegelHome.class);
+                final Intent intent = new Intent(context, ActivityHome.class);
 
                 // we start the next Activity from a separate thread, so that we can properly wait for
                 // the Animation to end first.

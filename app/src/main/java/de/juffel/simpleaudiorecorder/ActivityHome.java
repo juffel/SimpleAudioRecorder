@@ -7,7 +7,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 
 
-public class ActivityZiegelHome extends ActivityZiegel {
+public class ActivityHome extends ActivityZiegel {
 
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -24,8 +24,8 @@ public class ActivityZiegelHome extends ActivityZiegel {
         mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeListener() {
             @Override
             public void onShake() {
-                Context context = ActivityZiegelHome.this;
-                final Intent intent = new Intent(context, ActivityZiegelRandomStory.class);
+                Context context = ActivityHome.this;
+                final Intent intent = new Intent(context, ActivityRandomStory.class);
 
                 context.startActivity(intent);
             }

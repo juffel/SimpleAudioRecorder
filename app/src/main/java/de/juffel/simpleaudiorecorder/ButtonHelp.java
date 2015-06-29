@@ -21,7 +21,7 @@ public class ButtonHelp extends ButtonBasic {
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent intent = new Intent(context, ActivityZiegelExplain.class);
+                final Intent intent = new Intent(context, ActivityExplain.class);
 
                 // we start the next Activity from a separate thread, so that we can properly wait for
                 // the Animation to end first.

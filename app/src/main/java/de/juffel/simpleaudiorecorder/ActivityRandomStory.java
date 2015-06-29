@@ -10,7 +10,7 @@ import org.apache.http.Header;
 import java.io.UnsupportedEncodingException;
 
 
-public class ActivityZiegelRandomStory extends ActivityZiegel {
+public class ActivityRandomStory extends ActivityZiegel {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

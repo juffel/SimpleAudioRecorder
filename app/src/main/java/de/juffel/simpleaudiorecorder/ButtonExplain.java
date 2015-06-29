@@ -30,7 +30,7 @@ public class ButtonExplain extends ButtonBasic {
             public void onCompletion(MediaPlayer mp) {
 
                 // for testing purposes start any other activity
-                final Intent intent = new Intent(context, ActivityZiegelHome.class);
+                final Intent intent = new Intent(context, ActivityHome.class);
 
                 // we start the next Activity from a separate thread, so that we can properly wait for
                 // the Animation to end first. 
@@ -57,7 +57,7 @@ public class ButtonExplain extends ButtonBasic {
                 if (playing) {
                     playing = false;
                     player.reset(); // on completion listener will not be triggered
-                    Intent intent = new Intent(context, ActivityZiegelHome.class);
+                    Intent intent = new Intent(context, ActivityHome.class);
                     context.startActivity(intent);
                     ((AnimationDrawable) ButtonExplain.super.getBackground()).stop();
                     ButtonExplain.super.setBackground(null);

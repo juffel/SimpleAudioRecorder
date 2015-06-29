@@ -3,7 +3,7 @@ package de.juffel.simpleaudiorecorder;
 import android.os.Bundle;
 
 
-public class ActivityZiegelExplain extends ActivityZiegel {
+public class ActivityExplain extends ActivityZiegel {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

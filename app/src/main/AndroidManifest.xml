@@ -25,19 +25,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActivityZiegelExplain"
+            android:name=".ActivityExplain"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".ActivityZiegelHome"
+            android:name=".ActivityHome"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".ActivityZiegelProcess"
+            android:name=".ActivityProcess"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".ActivityZiegelBye"
+            android:name=".ActivityBye"
             android:screenOrientation="portrait" >
         </activity>
         <!-- receiver to trigger launch on boot event -->
@@ -47,7 +47,7 @@
             </intent-filter>
         </receiver>
         <activity
-            android:name=".ActivityZiegelRandomStory"
+            android:name=".ActivityRandomStory"
             android:screenOrientation="portrait" >
         </activity>
         <activity

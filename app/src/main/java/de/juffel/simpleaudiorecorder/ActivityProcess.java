@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ActivityZiegelProcess extends ActivityZiegel {
+public class ActivityProcess extends ActivityZiegel {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

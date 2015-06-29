@@ -42,7 +42,7 @@ public class ButtonRecord extends ButtonBasic {
                     recording = false;
                     triggerEntryAnimation();
                     stopRecord();
-                    final Intent intent = new Intent(context, ActivityZiegelProcess.class);
+                    final Intent intent = new Intent(context, ActivityProcess.class);
 
                     // we start the next Activity from a separate thread, so that we can properly wait for
                     // the Animation to end first.

@@ -11,7 +11,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.apache.http.Header;
 
-public class ActivityZiegelBye extends ActivityZiegel {
+public class ActivityBye extends ActivityZiegel {
 
     private String token;
 
@@ -52,8 +52,8 @@ public class ActivityZiegelBye extends ActivityZiegel {
                 // return to initial activity and lock screen
                 System.out.println("App lifecycle ended.");
 
-                Intent intent = new Intent(ActivityZiegelBye.this, ActivitySleep.class);
-                ActivityZiegelBye.this.startActivity(intent);
+                Intent intent = new Intent(ActivityBye.this, ActivitySleep.class);
+                ActivityBye.this.startActivity(intent);
             }
 
             @Override

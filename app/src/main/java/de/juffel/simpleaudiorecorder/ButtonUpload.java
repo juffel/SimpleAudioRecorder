@@ -95,7 +95,7 @@ public class ButtonUpload extends ButtonBasic {
     }
 
     /**
-     * Parses the Token from the received bytes and starts the ActivityZiegelBye
+     * Parses the Token from the received bytes and starts the ActivityBye
      */
     private void processResponse(byte[] bytes) {
         String token = null;
@@ -117,7 +117,7 @@ public class ButtonUpload extends ButtonBasic {
         if (upload_done && upload_animation_done) {
             triggerExitAnimation();
 
-            final Intent intent = new Intent(getContext(), ActivityZiegelBye.class);
+            final Intent intent = new Intent(getContext(), ActivityBye.class);
             intent.putExtra("token", token);
 
             getContext().startActivity(intent);
