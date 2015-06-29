@@ -1,6 +1,7 @@
 package de.juffel.simpleaudiorecorder;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -30,21 +31,21 @@ public class ActivityRandomStory extends ActivityZiegel {
      */
     private void playRandomStory() {
             String url = ActivityZiegel.SERVER_URL + "/random";
-            System.out.println("requesting random story from " + url);
+            Log.i(TAG, "requesting random story from " + url);
 
             // send request
             AsyncHttpClient client = new AsyncHttpClient();
             client.get(url, new AsyncHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
-                    System.out.println("response received with status code " + statusCode);
+                    Log.i(TAG, "response received with status code " + statusCode);
                     // TODO trigger exit animation
                     processResponse(bytes);
                 }
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] bytes, Throwable throwable) {
-                    System.out.println("response received with status code " + statusCode);
+                    Log.i(TAG, "response received with status code " + statusCode);
                 }
             });
     }

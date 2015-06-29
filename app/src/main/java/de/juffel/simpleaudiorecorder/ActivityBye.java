@@ -3,6 +3,7 @@ package de.juffel.simpleaudiorecorder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -22,7 +23,7 @@ public class ActivityBye extends ActivityZiegel {
 
         Intent intent = getIntent();
         this.token = intent.getStringExtra("token");
-        System.out.println(token);
+        Log.i(TAG, token);
 
         Integer t0 = Integer.parseInt(token.substring(0, 1));
         Integer t1 = Integer.parseInt(token.substring(1,2));
@@ -50,7 +51,7 @@ public class ActivityBye extends ActivityZiegel {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 // return to initial activity and lock screen
-                System.out.println("App lifecycle ended.");
+                Log.i(TAG, "App lifecycle ended.");
 
                 Intent intent = new Intent(ActivityBye.this, ActivitySleep.class);
                 ActivityBye.this.startActivity(intent);
@@ -58,7 +59,7 @@ public class ActivityBye extends ActivityZiegel {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                System.out.println("Server request: no changes were made to story metadata on server yet. Try again later.");
+                Log.i(TAG, "Server request: no changes were made to story metadata on server yet. Try again later.");
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override

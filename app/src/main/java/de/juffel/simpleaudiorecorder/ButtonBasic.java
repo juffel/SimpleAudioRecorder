@@ -12,6 +12,7 @@ import android.widget.Button;
  */
 public class ButtonBasic extends Button {
     private Integer entryAnimation, idleAnimation, exitAnimation;
+    static final String TAG = "ActivityZiegelButton";
 
     public ButtonBasic(Context context, AttributeSet attrs) {
         super(context, attrs);

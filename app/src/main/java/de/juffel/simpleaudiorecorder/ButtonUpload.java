@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -49,7 +50,7 @@ public class ButtonUpload extends ButtonBasic {
      */
     private void startUpload() {
         String url = ActivityZiegel.SERVER_URL + "/audio/put_here";
-        System.out.println("uploading file " + file_path + " to " + url);
+        Log.i(TAG,"uploading file " + file_path + " to " + url);
 
         Integer duration = triggerIdleAnimation();
         // the animation must play at least two cycles before ActivityToken is opened, to achieve this:
@@ -82,14 +83,14 @@ public class ButtonUpload extends ButtonBasic {
         client.post(url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
-                System.out.println("response received with status code " + statusCode);
+                Log.i(TAG,"response received with status code " + statusCode);
                 upload_done = true;
                 processResponse(bytes);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] bytes, Throwable throwable) {
-                System.out.println("response received with status code " + statusCode);
+                Log.i(TAG,"response received with status code " + statusCode);
             }
         });
     }

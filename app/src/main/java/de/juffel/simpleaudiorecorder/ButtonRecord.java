@@ -6,6 +6,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaRecorder;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.io.IOException;
@@ -71,7 +72,7 @@ public class ButtonRecord extends ButtonBasic {
      * Control audio capture (start & stop)
      */
     private void startRecord() {
-        System.out.println("record file to path " + file_path);
+        Log.i(TAG, "record file to path " + file_path);
         // initialize recorder
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
@@ -85,7 +86,7 @@ public class ButtonRecord extends ButtonBasic {
             e.printStackTrace();
         }
 
-        System.out.println("starting to record to file: " + file_path);
+        Log.i(TAG, "starting to record to file: " + file_path);
         recorder.start();
     }
     void stopRecord() {

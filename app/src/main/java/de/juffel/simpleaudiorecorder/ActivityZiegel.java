@@ -10,6 +10,7 @@ public class ActivityZiegel extends Activity {
     static final String FILENAME = "record.3gp";
     // kai uberspace
     static final String SERVER_URL = "http://kaesim.cepheus.uberspace.de:63190";
+    static final String TAG = "ActivityZiegel";
 
     @Override
     public void onBackPressed() {
