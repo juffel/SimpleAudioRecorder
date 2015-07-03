@@ -1,5 +1,10 @@
 # SimpleAudioRecorder
 
-Android App that lets users record Audio and playback the recorded Audio.
+This repository is the Android-part of Großstadtziegel, a contribution to [Coding Da Vinci 2015](http://codingdavinci.de) by
 
-Simple Demo App to learn Android App Development ;)
+  * Julian Dobmann
+  * Kai Kruschel
+  * Stefan Brüning
+
+More information about the Großstadtziegel-project [here](http://elab-kh-berlin.de/courses/cod1ng_dav1nc1/?cat=11).
+The [web/RoR-part of the project](https://github.com/juffel/StoriesBackend) is also on github.
