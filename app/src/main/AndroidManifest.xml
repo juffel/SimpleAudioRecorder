@@ -63,10 +63,6 @@
             android:name=".ActivitySleep"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name=".ActivityExplainRecorded"
-            android:label="@string/title_activity_activity_explain_recorded" >
-        </activity>
     </application>
 
 </manifest>

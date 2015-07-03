@@ -109,7 +109,7 @@ public class ActivityBye extends ActivityZiegel {
                 // return to initial activity and lock screen
                 Log.i(TAG, "App lifecycle ended.");
 
-                Intent intent = new Intent(ActivityBye.this, ActivitySleep.class);
+                Intent intent = new Intent(ActivityBye.this, ActivityExplainUploaded.class);
                 ActivityBye.this.startActivity(intent);
             }
         });

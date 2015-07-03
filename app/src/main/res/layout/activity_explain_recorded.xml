@@ -5,8 +5,8 @@
     android:background="@color/background"
     android:keepScreenOn="true" >
 
-    <de.juffel.simpleaudiorecorder.ButtonExplain
-        android:id="@+id/explain_button"
+    <de.juffel.simpleaudiorecorder.ButtonExplainRecorded
+        android:id="@+id/explain_button_recorded"
         android:layout_width="560px"
         android:layout_height="264px"
         android:layout_centerHorizontal="true"

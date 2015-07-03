@@ -9,14 +9,17 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
+ * This abstract class implements an interface to force subclasses to implement methods to set the
+ * values for the audio resource to be played onclick and the activity that is entered after replay
+ * has finished.
+ * To set those values implement getAudio() and getActivity() in subclass, return the audio resource
+ * id integer to play and the class of the activity to start.
  * Created by Julian on 15/06/15.
  */
-public class ButtonExplain extends ButtonBasic {
+public abstract class ButtonExplain extends ButtonBasic implements IButtonExplain {
 
     private MediaPlayer player;
     private Boolean playing = false;
-    private static final String filename = "erklaerbaer";
-    private Integer resourceId;
 
     public ButtonExplain(final Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -24,17 +27,17 @@ public class ButtonExplain extends ButtonBasic {
         setAnimations(R.drawable.question, R.drawable.playing, R.drawable.play);
 
         // create MediaPlayer from "raw" resource audio file
-        player = MediaPlayer.create(context, resourceId);
+        player = MediaPlayer.create(context, getAudio());
         // when the player finishes playing, switch to Home Activity
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
 
                 // for testing purposes start any other activity
-                final Intent intent = new Intent(context, ActivityHome.class);
+                final Intent intent = new Intent(context, getActivity());
 
                 // we start the next Activity from a separate thread, so that we can properly wait for
-                // the Animation to end first. 
+                // the Animation to end first.
                 Runnable startNext = new Runnable() {
                     @Override
                     public void run() {
@@ -58,7 +61,7 @@ public class ButtonExplain extends ButtonBasic {
                 if (playing) {
                     playing = false;
                     player.reset(); // on completion listener will not be triggered
-                    Intent intent = new Intent(context, ActivityHome.class);
+                    Intent intent = new Intent(context, getActivity());
                     context.startActivity(intent);
                     ((AnimationDrawable) ButtonExplain.super.getBackground()).stop();
                     ButtonExplain.super.setBackground(null);
@@ -74,9 +77,5 @@ public class ButtonExplain extends ButtonBasic {
 
         // play entry animation
         this.triggerEntryAnimation();
-    }
-
-    public void setResource(Integer resourceId) {
-        this.resourceId = resourceId;
     }
 }
