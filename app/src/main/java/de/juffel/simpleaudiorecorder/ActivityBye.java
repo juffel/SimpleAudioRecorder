@@ -1,6 +1,8 @@
 package de.juffel.simpleaudiorecorder;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -50,11 +52,7 @@ public class ActivityBye extends ActivityZiegel {
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                // return to initial activity and lock screen
-                Log.i(TAG, "App lifecycle ended.");
-
-                Intent intent = new Intent(ActivityBye.this, ActivitySleep.class);
-                ActivityBye.this.startActivity(intent);
+                playByeAudio();
             }
 
             @Override
@@ -95,5 +93,26 @@ public class ActivityBye extends ActivityZiegel {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * starts audio replay on bye audio resource, calls sleep activity when done
+     */
+    private void playByeAudio() {
+        Context context = getApplicationContext();
+        // create MediaPlayer from "raw" resource audio file
+        MediaPlayer player = MediaPlayer.create(context, R.raw.no_audio);
+        // when the player finishes playing, switch to Home Activity
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                // return to initial activity and lock screen
+                Log.i(TAG, "App lifecycle ended.");
+
+                Intent intent = new Intent(ActivityBye.this, ActivitySleep.class);
+                ActivityBye.this.startActivity(intent);
+            }
+        });
+        player.start();
     }
 }
