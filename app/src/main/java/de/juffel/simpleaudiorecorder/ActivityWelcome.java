@@ -27,7 +27,7 @@ public class ActivityWelcome extends ActivityZiegel {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                Intent intent = new Intent(context, ActivityExplain.class);
+                Intent intent = new Intent(context, ActivityExplainWelcome.class);
                 startActivity(intent);
             }
         }, duration);

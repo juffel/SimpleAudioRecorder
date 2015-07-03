@@ -16,6 +16,7 @@ public class ButtonExplain extends ButtonBasic {
     private MediaPlayer player;
     private Boolean playing = false;
     private static final String filename = "erklaerbaer";
+    private Integer resourceId;
 
     public ButtonExplain(final Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -23,7 +24,7 @@ public class ButtonExplain extends ButtonBasic {
         setAnimations(R.drawable.question, R.drawable.playing, R.drawable.play);
 
         // create MediaPlayer from "raw" resource audio file
-        player = MediaPlayer.create(context, R.raw.explanation);
+        player = MediaPlayer.create(context, resourceId);
         // when the player finishes playing, switch to Home Activity
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -73,5 +74,9 @@ public class ButtonExplain extends ButtonBasic {
 
         // play entry animation
         this.triggerEntryAnimation();
+    }
+
+    public void setResource(Integer resourceId) {
+        this.resourceId = resourceId;
     }
 }

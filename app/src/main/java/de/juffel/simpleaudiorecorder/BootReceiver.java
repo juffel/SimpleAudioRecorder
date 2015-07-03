@@ -12,7 +12,7 @@ import android.content.Intent;
 public class BootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intentParam) {
-        Intent intent = new Intent(context, ActivityExplain.class);
+        Intent intent = new Intent(context, ActivityExplainWelcome.class);
         // TODO check, whether next line is necessary
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);

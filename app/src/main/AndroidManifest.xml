@@ -25,7 +25,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActivityExplain"
+            android:name=".ActivityExplainWelcome"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ActivityExplainRecorded"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ActivityExplainUploaded"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -46,6 +54,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".ActivityRandomStory"
             android:screenOrientation="portrait" >
@@ -53,6 +62,10 @@
         <activity
             android:name=".ActivitySleep"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ActivityExplainRecorded"
+            android:label="@string/title_activity_activity_explain_recorded" >
         </activity>
     </application>
 

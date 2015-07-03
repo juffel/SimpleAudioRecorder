@@ -18,5 +18,7 @@
     <string name="title_activity_activity_ziegel_story">ActivityZiegelStory</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="title_activity_activity_sleep">ActivitySleep</string>
+    <string name="title_activity_activity_explain_recorded">ActivityExplainRecorded</string>
+    <string name="title_activity_explain_recorded">ExplainRecorded</string>
 
 </resources>
